@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Cpu, Zap, Shield, BarChart3, Calendar, Users, TrendingUp, MessageSquare, DollarSign, CheckCircle2, Clock, Target, Rocket, Phone, Mail, MapPin, Sparkles, Globe, ArrowRight, X, FileText, Lock, Layers, Bot, Settings, Building2, Newspaper, BookOpen, FileText as CaseStudy, Video, Film, Mic, PlayCircle, Languages, Send, Linkedin, Twitter, ExternalLink, Search, User, TrendingDown, Award, Briefcase, ArrowLeft, Share2, Instagram, Facebook } from 'lucide-react'
 import { useSEO } from './hooks/useSEO'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 
 function ProductDropdown() {
 	return (
@@ -229,8 +230,8 @@ function Hero() {
 	useSEO({
 		title: 'AIXcellence — Where AI meets excellence | Intelligent Automation Platform',
 		description: 'Transform your business with AIXcellence intelligent automation platform. ARA Agent handles 24/7 customer support and bookings. AXE Agent creates professional video content with AI cloning. Enterprise-grade AI automation solutions.',
-		url: 'https://aixcellence.com/',
-		canonical: 'https://aixcellence.com/'
+		url: 'https://aixcellence.co/',
+		canonical: 'https://aixcellence.co/'
 	})
 	
 	return (
@@ -1213,7 +1214,7 @@ function Footer() {
 						</div>
 						<div className="footer-contact-item">
 							<Mail size={16} />
-							<a href="mailto:hi@aixcellenc.com">hi@aixcellenc.com</a>
+							<a href="mailto:hi@aixcellence.co">hi@aixcellence.co</a>
 						</div>
 						<div className="footer-contact-item">
 							<MapPin size={16} />
@@ -1819,7 +1820,7 @@ function PrivacyPolicy() {
 						
 						<h3>6. Contact Us</h3>
 						<p>For privacy-related questions, contact us at:</p>
-						<p>Email: <a href="mailto:privacy@aixcellenc.com">privacy@aixcellenc.com</a><br />
+						<p>Email: <a href="mailto:privacy@aixcellence.co">privacy@aixcellence.co</a><br />
 						Address: 1500 Grant St #4242, Denver, CO 80203, United States</p>
 					</div>
 				</motion.div>
@@ -1915,7 +1916,7 @@ function TermsOfService() {
 						
 						<h3>8. Contact Information</h3>
 						<p>For questions about these Terms, contact us at:</p>
-						<p>Email: <a href="mailto:legal@aixcellenc.com">legal@aixcellenc.com</a><br />
+						<p>Email: <a href="mailto:legal@aixcellence.co">legal@aixcellence.co</a><br />
 						Address: 1500 Grant St #4242, Denver, CO 80203, United States</p>
 					</div>
 				</motion.div>
@@ -2032,7 +2033,7 @@ function Security() {
 						
 						<h3>8. Security Contact</h3>
 						<p>To report security vulnerabilities or concerns:</p>
-						<p>Email: <a href="mailto:security@aixcellenc.com">security@aixcellenc.com</a><br />
+						<p>Email: <a href="mailto:security@aixcellence.co">security@aixcellence.co</a><br />
 						Address: 1500 Grant St #4242, Denver, CO 80203, United States</p>
 					</div>
 				</motion.div>
@@ -2196,8 +2197,8 @@ function CaseStudyPage() {
 		title: `${study.title} | AIXcellence Case Study`,
 		description: study.excerpt,
 		keywords: `case study, ${study.industry}, ${study.company}, AI automation success, ARA Agent, AXE Agent, ${study.title}`,
-		url: `https://aixcellence.com/#case-${studyId}`,
-		canonical: `https://aixcellence.com/#case-${studyId}`,
+		url: `https://aixcellence.co/#case-${studyId}`,
+		canonical: `https://aixcellence.co/#case-${studyId}`,
 		image: study.image,
 		type: 'article'
 	})
@@ -2650,8 +2651,8 @@ function CaseStudiesPage() {
 		title: 'Case Studies — AI Automation Success Stories | AIXcellence',
 		description: 'Discover how businesses across industries are transforming operations with AIXcellence AI agents. Real success stories showing cost reduction, efficiency gains, and customer satisfaction improvements.',
 		keywords: 'AI automation case studies, AI agent success stories, business automation examples, customer support AI results, video AI case studies',
-		url: 'https://aixcellence.com/#cases',
-		canonical: 'https://aixcellence.com/#cases'
+		url: 'https://aixcellence.co/#cases',
+		canonical: 'https://aixcellence.co/#cases'
 	})
 	
 	const caseStudies = caseStudiesData
@@ -3042,8 +3043,8 @@ function BlogPostPage() {
 		title: `${post.title} | AIXcellence Blog`,
 		description: post.excerpt,
 		keywords: `AI automation, ${post.category}, ${post.title}, AIXcellence, ARA Agent, AXE Agent`,
-		url: `https://aixcellence.com/#blog-${postId}`,
-		canonical: `https://aixcellence.com/#blog-${postId}`,
+		url: `https://aixcellence.co/#blog-${postId}`,
+		canonical: `https://aixcellence.co/#blog-${postId}`,
 		image: post.image,
 		type: 'article',
 		author: post.author,
@@ -3438,8 +3439,8 @@ function BlogPage() {
 		title: 'Blog — AI Automation Insights & Best Practices | AIXcellence',
 		description: 'Explore the latest trends in AI automation, learn best practices, and discover how businesses are transforming with intelligent agents. Expert insights on customer service, video marketing, and AI implementation.',
 		keywords: 'AI automation blog, AI agents blog, customer service AI, video marketing AI, AI best practices, business automation insights',
-		url: 'https://aixcellence.com/#blog',
-		canonical: 'https://aixcellence.com/#blog'
+		url: 'https://aixcellence.co/#blog',
+		canonical: 'https://aixcellence.co/#blog'
 	})
 	
 	const blogPosts = blogPostsData
@@ -3798,8 +3799,8 @@ function NewsroomPostPage() {
 		title: `${post.title} | AIXcellence Newsroom`,
 		description: post.excerpt,
 		keywords: `AIXcellence news, ${post.category}, ${post.title}, AI automation updates`,
-		url: `https://aixcellence.com/#news-${postId}`,
-		canonical: `https://aixcellence.com/#news-${postId}`,
+		url: `https://aixcellence.co/#news-${postId}`,
+		canonical: `https://aixcellence.co/#news-${postId}`,
 		image: post.image,
 		type: 'article',
 		publishedTime: new Date(post.date).toISOString()
@@ -4119,8 +4120,8 @@ function NewsroomPage() {
 		title: 'Newsroom — Latest Updates & Announcements | AIXcellence',
 		description: 'Stay updated with the latest news, product updates, partnerships, and announcements from AIXcellence. Get insights into new features, company milestones, and industry developments.',
 		keywords: 'AIXcellence news, AI automation updates, product announcements, company news, AI technology updates',
-		url: 'https://aixcellence.com/#news',
-		canonical: 'https://aixcellence.com/#news'
+		url: 'https://aixcellence.co/#news',
+		canonical: 'https://aixcellence.co/#news'
 	})
 	
 	const newsItems = newsItemsData
@@ -4369,7 +4370,7 @@ function NewsroomPage() {
 									For press inquiries, interview requests, or media partnerships, please contact our communications team.
 								</p>
 								<motion.a
-									href="mailto:press@aixcellenc.com"
+									href="mailto:press@aixcellence.co"
 									className="btn btn-primary"
 									whileHover={{ scale: 1.05 }}
 									whileTap={{ scale: 0.95 }}
@@ -4394,8 +4395,8 @@ function CustomServicesPage() {
 		title: 'Custom Software Solutions — AI-Powered Development Services | AIXcellence',
 		description: 'Get custom AI software solutions tailored to your business needs. We offer custom AI agent development, integrations, workflow automation, and implementation services built on our proven ARA and AXE Agent technology.',
 		keywords: 'custom software solutions, custom AI development, bespoke AI agents, custom automation, AI integration services, custom software development, AIXcellence custom services',
-		url: 'https://aixcellence.com/#custom-services',
-		canonical: 'https://aixcellence.com/#custom-services'
+		url: 'https://aixcellence.co/#custom-services',
+		canonical: 'https://aixcellence.co/#custom-services'
 	})
 	
 	const services = [
@@ -4768,8 +4769,8 @@ function ContactPage() {
 		title: 'Contact Us — Get Started with AIXcellence | AIXcellence',
 		description: 'Get in touch with AIXcellence to learn how our AI agents can transform your business. Schedule a demo, request a quote, or speak with our team about intelligent automation solutions.',
 		keywords: 'contact AIXcellence, AI automation demo, get started with AI agents, AIXcellence sales, business automation consultation',
-		url: 'https://aixcellence.com/#contact',
-		canonical: 'https://aixcellence.com/#contact'
+		url: 'https://aixcellence.co/#contact',
+		canonical: 'https://aixcellence.co/#contact'
 	})
 	const [formData, setFormData] = useState({
 		name: '',
@@ -4986,7 +4987,7 @@ function ContactPage() {
 									</motion.a>
 									
 									<motion.a
-										href="mailto:hi@aixcellenc.com"
+										href="mailto:hi@aixcellence.co"
 										className="contact-info-item"
 										whileHover={{ x: 4 }}
 									>
@@ -4995,7 +4996,7 @@ function ContactPage() {
 										</div>
 										<div className="contact-info-content">
 											<h3 className="contact-info-label">Email</h3>
-											<p className="contact-info-value">hi@aixcellenc.com</p>
+											<p className="contact-info-value">hi@aixcellence.co</p>
 										</div>
 									</motion.a>
 									
@@ -5073,9 +5074,9 @@ function AXEAgentPage() {
 		title: 'AXE Agent — AI Video Intelligence Agent | AIXcellence',
 		description: 'AXE Agent creates professional video content with AI cloning technology. Generate marketing videos, training content, and personalized messages in minutes with voice and video cloning. Multi-language support included.',
 		keywords: 'AXE Agent, AI video generation, video cloning, voice cloning, AI spokesperson, automated video production, AI video content',
-		url: 'https://aixcellence.com/#axe-agent',
-		canonical: 'https://aixcellence.com/#axe-agent',
-		image: 'https://aixcellence.com/images/products/ChatGPT%20Image%20Nov%2014,%202025,%2003_08_07%20PM.png'
+		url: 'https://aixcellence.co/#axe-agent',
+		canonical: 'https://aixcellence.co/#axe-agent',
+		image: 'https://aixcellence.co/images/products/ChatGPT%20Image%20Nov%2014,%202025,%2003_08_07%20PM.png'
 	})
 	
 	const features = [
@@ -5370,9 +5371,9 @@ function ARAAgentPage() {
 		title: 'ARA Agent — Customer Intelligence Agent | AIXcellence',
 		description: 'ARA Agent is your 24/7 customer intelligence agent that handles support, bookings, and multi-channel communication with human-like empathy. Automate customer interactions, manage appointments, and boost satisfaction.',
 		keywords: 'ARA Agent, customer support AI, AI customer service, booking management AI, AI chatbot, customer intelligence, automated support',
-		url: 'https://aixcellence.com/#ara-agent',
-		canonical: 'https://aixcellence.com/#ara-agent',
-		image: 'https://aixcellence.com/images/products/ChatGPT%20Image%20Nov%2012,%202025,%2011_25_49%20AM.png'
+		url: 'https://aixcellence.co/#ara-agent',
+		canonical: 'https://aixcellence.co/#ara-agent',
+		image: 'https://aixcellence.co/images/products/ChatGPT%20Image%20Nov%2012,%202025,%2011_25_49%20AM.png'
 	})
 	
 	const features = [
@@ -5859,6 +5860,7 @@ export default function App() {
 			<PrivacyPolicy />
 			<TermsOfService />
 			<Security />
+			<SpeedInsights />
 		</>
 	)
 }

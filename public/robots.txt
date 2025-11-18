@@ -16,7 +16,7 @@ Allow: /#cases
 Allow: /#contact
 
 # Sitemap location
-Sitemap: https://aixcellence.com/sitemap.xml
+Sitemap: https://aixcellence.co/sitemap.xml
 
 # Crawl-delay (optional, adjust as needed)
 Crawl-delay: 1

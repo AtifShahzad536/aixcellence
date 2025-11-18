@@ -146,5 +146,5 @@ If you need environment variables:
 
 ---
 
-For issues or questions, contact: hi@aixcellenc.com
+For issues or questions, contact: hi@aixcellence.co
 

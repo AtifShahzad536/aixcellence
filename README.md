@@ -111,8 +111,8 @@ See [LICENSE](LICENSE) file for details.
 
 ## 👥 Contact
 
-- **Website**: https://aixcellence.com
-- **Email**: hi@aixcellenc.com
+- **Website**: https://aixcellence.co
+- **Email**: hi@aixcellence.co
 - **Phone**: +1 (720) 604-7231
 - **Address**: 1500 Grant St #4242, Denver, CO 80203, United States
 
@@ -124,7 +124,7 @@ See [LICENSE](LICENSE) file for details.
 
 ## 🤝 Contributing
 
-This is a private company website. For inquiries, please contact us at hi@aixcellenc.com
+This is a private company website. For inquiries, please contact us at hi@aixcellence.co
 
 ---
 
