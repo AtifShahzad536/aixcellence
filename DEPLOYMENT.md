@@ -40,6 +40,8 @@ vercel --prod
 
 ### Step 3: Set Up GitHub Actions Secrets (For CI/CD)
 
+**⚠️ Important**: If you're using Vercel's built-in GitHub integration (Option A above), you don't need GitHub Actions for deployment. The GitHub Actions workflow is optional and mainly for CI checks.
+
 If you want to use GitHub Actions for deployment, you need to add secrets:
 
 1. Go to your GitHub repository: https://github.com/muhammadwahaib/aixcellence
@@ -49,17 +51,26 @@ If you want to use GitHub Actions for deployment, you need to add secrets:
 #### Required Secrets:
 
 1. **VERCEL_TOKEN**
-   - Get it from: https://vercel.com/account/tokens
-   - Create a new token with full access
+   - Go to: https://vercel.com/account/tokens
+   - Click "Create Token"
+   - Name it (e.g., "GitHub Actions")
+   - Copy the token immediately (you won't see it again)
+   - Add it as `VERCEL_TOKEN` in GitHub Secrets
 
 2. **VERCEL_ORG_ID**
-   - Get it from: https://vercel.com/account
-   - Or run: `vercel whoami` and check your account settings
+   - Go to: https://vercel.com/account
+   - Look for "Team ID" or "Organization ID" in the URL or settings
+   - Or run: `vercel whoami` in terminal and check the output
+   - Add it as `VERCEL_ORG_ID` in GitHub Secrets
 
 3. **VERCEL_PROJECT_ID**
-   - After first deployment, find it in:
-   - Vercel Dashboard → Your Project → Settings → General
+   - After first deployment via Vercel Dashboard:
+   - Go to Vercel Dashboard → Your Project → Settings → General
+   - Find "Project ID" in the project settings
    - Or run: `vercel inspect` in your project directory
+   - Add it as `VERCEL_PROJECT_ID` in GitHub Secrets
+
+**Note**: Make sure the GitHub account that triggers the workflow is the same one linked to your Vercel account, or use a Vercel token from an account that has access to the project.
 
 ### Step 4: Verify Deployment
 
@@ -131,6 +142,21 @@ If you need environment variables:
 1. Check Vercel deployment logs
 2. Verify `vercel.json` configuration
 3. Ensure all secrets are set correctly
+
+### "Insufficient Permissions" Error
+
+If you see "The github user [username] who initiated the deployment does not have an account on Vercel":
+
+**Solution 1 (Recommended)**: Use Vercel's built-in GitHub integration:
+1. Disconnect the project from GitHub in Vercel Dashboard
+2. Reconnect it using "Import Git Repository"
+3. This automatically handles authentication
+
+**Solution 2**: Fix GitHub Actions authentication:
+1. Ensure the Vercel token is created from the same account that owns the project
+2. Verify all three secrets (VERCEL_TOKEN, VERCEL_ORG_ID, VERCEL_PROJECT_ID) are correct
+3. Make sure the GitHub account that pushes code is linked to your Vercel account
+4. Try creating a new Vercel token and updating the secret
 
 ### GitHub Actions Not Running
 
