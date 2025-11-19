@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { Cpu, Zap, Shield, BarChart3, Calendar, Users, TrendingUp, MessageSquare, DollarSign, CheckCircle2, Clock, Target, Rocket, Phone, Mail, MapPin, Sparkles, Globe, ArrowRight, X, FileText, Lock, Layers, Bot, Settings, Building2, Newspaper, BookOpen, FileText as CaseStudy, Video, Film, Mic, PlayCircle, Languages, Send, Linkedin, Twitter, ExternalLink, Search, User, TrendingDown, Award, Briefcase, ArrowLeft, Share2, Instagram, Facebook } from 'lucide-react'
+import { Cpu, Zap, Shield, BarChart3, Calendar, Users, TrendingUp, MessageSquare, DollarSign, CheckCircle2, Clock, Target, Rocket, Phone, Mail, MapPin, Sparkles, Globe, ArrowRight, X, FileText, Lock, Layers, Bot, Settings, Building2, Newspaper, BookOpen, FileText as CaseStudy, Video, Film, Mic, PlayCircle, Languages, Send, Linkedin, Twitter, ExternalLink, Search, User, TrendingDown, Award, Briefcase, ArrowLeft, Share2, Instagram, Facebook, Menu } from 'lucide-react'
 import { useSEO } from './hooks/useSEO'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
@@ -114,9 +114,44 @@ function Header() {
 		{ label: 'Pricing', href: '#pricing' },
 	]
 	const [open, setOpen] = useState<number | null>(null)
+	const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+	const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState<number | null>(null)
 	const { scrollY } = useScroll()
 	const headerOpacity = useTransform(scrollY, [0, 100], [0.92, 0.98])
-	
+	const mobileMenuRef = useRef<HTMLDivElement>(null)
+
+	// Close mobile menu when clicking outside
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target as Node)) {
+				// Only close if clicking outside the menu, but allow clicks on the menu button
+				const target = event.target as HTMLElement
+				if (!target.closest('.mobile-menu-button') && !target.closest('.mobile-menu-overlay')) {
+					setMobileMenuOpen(false)
+					setMobileSubmenuOpen(null)
+				}
+			}
+		}
+
+		if (mobileMenuOpen) {
+			document.addEventListener('mousedown', handleClickOutside)
+			document.body.style.overflow = 'hidden'
+		} else {
+			document.body.style.overflow = ''
+		}
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside)
+			document.body.style.overflow = ''
+		}
+	}, [mobileMenuOpen])
+
+	// Close mobile menu when clicking a link
+	const handleMobileLinkClick = () => {
+		setMobileMenuOpen(false)
+		setMobileSubmenuOpen(null)
+	}
+
 	return (
 		<motion.header 
 			className="header"
@@ -217,8 +252,215 @@ function Header() {
 							</svg>
 						</span>
 					</motion.a>
+					<motion.button
+						className="mobile-menu-button"
+						onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+						whileTap={{ scale: 0.95 }}
+						aria-label="Toggle mobile menu"
+					>
+						<AnimatePresence mode="wait">
+							{mobileMenuOpen ? (
+								<motion.div
+									key="close"
+									initial={{ rotate: -90, opacity: 0 }}
+									animate={{ rotate: 0, opacity: 1 }}
+									exit={{ rotate: 90, opacity: 0 }}
+									transition={{ duration: 0.2 }}
+								>
+									<X size={24} />
+								</motion.div>
+							) : (
+								<motion.div
+									key="menu"
+									initial={{ rotate: 90, opacity: 0 }}
+									animate={{ rotate: 0, opacity: 1 }}
+									exit={{ rotate: -90, opacity: 0 }}
+									transition={{ duration: 0.2 }}
+								>
+									<Menu size={24} />
+								</motion.div>
+							)}
+						</AnimatePresence>
+					</motion.button>
 				</div>
 			</div>
+
+			{/* Mobile Menu Overlay */}
+			<AnimatePresence>
+				{mobileMenuOpen && (
+					<>
+						<motion.div
+							className="mobile-menu-backdrop"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.3 }}
+							onClick={() => {
+								setMobileMenuOpen(false)
+								setMobileSubmenuOpen(null)
+							}}
+						/>
+						<motion.div
+							ref={mobileMenuRef}
+							className="mobile-menu-overlay"
+							initial={{ x: '100%' }}
+							animate={{ x: 0 }}
+							exit={{ x: '100%' }}
+							transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+						>
+							<div className="mobile-menu-content">
+								<div className="mobile-menu-header">
+									<img className="mobile-menu-logo" src="/images/logos/fulllogo_nobuffer.jpg" alt="AIXcellence logo" />
+									<button
+										className="mobile-menu-close"
+										onClick={() => {
+											setMobileMenuOpen(false)
+											setMobileSubmenuOpen(null)
+										}}
+										aria-label="Close menu"
+									>
+										<X size={24} />
+									</button>
+								</div>
+								<nav className="mobile-menu-nav">
+									{links.map((item, idx) => (
+										<div key={idx} className="mobile-menu-item">
+											{(item as any).isProduct || (item as any).isResources || (item as any).children ? (
+												<>
+													<button
+														className="mobile-menu-link mobile-menu-link-button"
+														onClick={() => setMobileSubmenuOpen(mobileSubmenuOpen === idx ? null : idx)}
+													>
+														<span>{item.label}</span>
+														<motion.svg
+															className="mobile-menu-chevron"
+															width="16"
+															height="16"
+															viewBox="0 0 16 16"
+															fill="none"
+															animate={{ rotate: mobileSubmenuOpen === idx ? 180 : 0 }}
+															transition={{ duration: 0.2 }}
+														>
+															<path d="M4 6L8 10L12 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+														</motion.svg>
+													</button>
+													<AnimatePresence>
+														{mobileSubmenuOpen === idx && (
+															<motion.div
+																className="mobile-submenu"
+																initial={{ height: 0, opacity: 0 }}
+																animate={{ height: 'auto', opacity: 1 }}
+																exit={{ height: 0, opacity: 0 }}
+																transition={{ duration: 0.3, ease: 'easeInOut' }}
+															>
+																{(item as any).isProduct && (
+																	<div className="mobile-submenu-content">
+																		<div className="mobile-submenu-section">
+																			<h4 className="mobile-submenu-title">Platform</h4>
+																			<a href="#aix-one" className="mobile-submenu-link" onClick={handleMobileLinkClick}>
+																				<Layers size={18} />
+																				<span>AIX One Platform</span>
+																				<span className="soon-badge">Soon</span>
+																			</a>
+																		</div>
+																		<div className="mobile-submenu-section">
+																			<h4 className="mobile-submenu-title">Products</h4>
+																			<a href="#ara-agent" className="mobile-submenu-link" onClick={handleMobileLinkClick}>
+																				<Bot size={18} />
+																				<span>ARA Agent</span>
+																			</a>
+																			<a href="#axe-agent" className="mobile-submenu-link" onClick={handleMobileLinkClick}>
+																				<Target size={18} />
+																				<span>AXE Agent</span>
+																			</a>
+																		</div>
+																		<div className="mobile-submenu-section">
+																			<h4 className="mobile-submenu-title">Features</h4>
+																			<span className="soon-badge">Soon</span>
+																		</div>
+																	</div>
+																)}
+																{(item as any).isResources && (
+																	<div className="mobile-submenu-content">
+																		<div className="mobile-submenu-section">
+																			<h4 className="mobile-submenu-title">Company</h4>
+																			<a href="#about" className="mobile-submenu-link" onClick={handleMobileLinkClick}>
+																				<Building2 size={18} />
+																				<span>About Us</span>
+																				<span className="soon-badge">Soon</span>
+																			</a>
+																			<a href="#news" className="mobile-submenu-link" onClick={handleMobileLinkClick}>
+																				<Newspaper size={18} />
+																				<span>Newsroom</span>
+																			</a>
+																		</div>
+																		<div className="mobile-submenu-section">
+																			<h4 className="mobile-submenu-title">Discover</h4>
+																			<a href="#blog" className="mobile-submenu-link" onClick={handleMobileLinkClick}>
+																				<BookOpen size={18} />
+																				<span>Blog</span>
+																			</a>
+																			<a href="#cases" className="mobile-submenu-link" onClick={handleMobileLinkClick}>
+																				<CaseStudy size={18} />
+																				<span>Case Studies</span>
+																			</a>
+																		</div>
+																	</div>
+																)}
+																{(item as any).children && !(item as any).isProduct && !(item as any).isResources && (
+																	<div className="mobile-submenu-content">
+																		{(item as any).children.map((c: any, cidx: number) => (
+																			<a key={cidx} href={c.href} className="mobile-submenu-link" onClick={handleMobileLinkClick}>
+																				<span>{c.label}</span>
+																				{c.soon && <span className="soon-badge">Soon</span>}
+																			</a>
+																		))}
+																	</div>
+																)}
+															</motion.div>
+														)}
+													</AnimatePresence>
+												</>
+											) : (
+												<a
+													href={(item as any).href || '#'}
+													className="mobile-menu-link"
+													onClick={handleMobileLinkClick}
+												>
+													{item.label}
+												</a>
+											)}
+										</div>
+									))}
+								</nav>
+								<div className="mobile-menu-actions">
+									<motion.a
+										href="#login"
+										className="btn btn-login btn-mobile"
+										onClick={handleMobileLinkClick}
+										whileTap={{ scale: 0.95 }}
+									>
+										Login
+									</motion.a>
+									<motion.a
+										href="#contact"
+										className="btn btn-sales btn-mobile"
+										onClick={handleMobileLinkClick}
+										whileTap={{ scale: 0.95 }}
+									>
+										<span>Talk to Sales</span>
+										<span className="arrow-button">
+											<svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+												<path d="M6 4L10 8L6 12" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+											</svg>
+										</span>
+									</motion.a>
+								</div>
+							</div>
+						</motion.div>
+					</>
+				)}
+			</AnimatePresence>
 		</motion.header>
 	)
 }
@@ -228,7 +470,7 @@ function Hero() {
 	const isInView = useInView(ref, { once: true, margin: '-100px' })
 	
 	useSEO({
-		title: 'AIXcellence — Where AI meets excellence | Intelligent Automation Platform',
+		title: 'AIXcellence',
 		description: 'Transform your business with AIXcellence intelligent automation platform. ARA Agent handles 24/7 customer support and bookings. AXE Agent creates professional video content with AI cloning. Enterprise-grade AI automation solutions.',
 		url: 'https://aixcellence.co/',
 		canonical: 'https://aixcellence.co/'
@@ -2175,22 +2417,42 @@ const caseStudiesData = [
 	]
 
 function CaseStudyPage() {
-	const [studyId, setStudyId] = useState<number | null>(null)
+	const [studyId, setStudyId] = useState<number | null>(() => {
+		const hash = window.location.hash
+		const match = hash.match(/^#case-(\d+)$/)
+		return match ? parseInt(match[1], 10) : null
+	})
 	const ref = useRef(null)
 	const isInView = useInView(ref, { once: true, margin: '-100px' })
 	
 	useEffect(() => {
-		const hash = window.location.hash
-		const match = hash.match(/^#case-(\d+)$/)
-		if (match) {
-			setStudyId(parseInt(match[1], 10))
+		const handleHashChange = () => {
+			const hash = window.location.hash
+			const match = hash.match(/^#case-(\d+)$/)
+			if (match) {
+				setStudyId(parseInt(match[1], 10))
+			} else {
+				setStudyId(null)
+			}
 		}
+		
+		// Check immediately
+		handleHashChange()
+		
+		// Listen for hash changes
+		window.addEventListener('hashchange', handleHashChange)
+		return () => window.removeEventListener('hashchange', handleHashChange)
 	}, [])
 	
-	if (!studyId) return null
-	
 	const study = caseStudiesData.find(s => s.id === studyId)
-	if (!study) return null
+	
+	if (!studyId || !study) {
+		return (
+			<div style={{ padding: '100px 20px', textAlign: 'center' }}>
+				<p>Case study not found. <a href="#cases">Return to Case Studies</a></p>
+			</div>
+		)
+	}
 	
 	// SEO for case study
 	useSEO({
@@ -3021,22 +3283,42 @@ const blogPostsData = [
 	]
 
 function BlogPostPage() {
-	const [postId, setPostId] = useState<number | null>(null)
+	const [postId, setPostId] = useState<number | null>(() => {
+		const hash = window.location.hash
+		const match = hash.match(/^#blog-(\d+)$/)
+		return match ? parseInt(match[1], 10) : null
+	})
 	const ref = useRef(null)
 	const isInView = useInView(ref, { once: true, margin: '-100px' })
 	
 	useEffect(() => {
-		const hash = window.location.hash
-		const match = hash.match(/^#blog-(\d+)$/)
-		if (match) {
-			setPostId(parseInt(match[1], 10))
+		const handleHashChange = () => {
+			const hash = window.location.hash
+			const match = hash.match(/^#blog-(\d+)$/)
+			if (match) {
+				setPostId(parseInt(match[1], 10))
+			} else {
+				setPostId(null)
+			}
 		}
+		
+		// Check immediately
+		handleHashChange()
+		
+		// Listen for hash changes
+		window.addEventListener('hashchange', handleHashChange)
+		return () => window.removeEventListener('hashchange', handleHashChange)
 	}, [])
 	
-	if (!postId) return null
-	
 	const post = blogPostsData.find(p => p.id === postId)
-	if (!post) return null
+	
+	if (!postId || !post) {
+		return (
+			<div style={{ padding: '100px 20px', textAlign: 'center' }}>
+				<p>Post not found. <a href="#blog">Return to Blog</a></p>
+			</div>
+		)
+	}
 	
 	// SEO for blog post
 	useSEO({
@@ -3777,22 +4059,42 @@ const newsItemsData = [
 	]
 
 function NewsroomPostPage() {
-	const [postId, setPostId] = useState<number | null>(null)
+	const [postId, setPostId] = useState<number | null>(() => {
+		const hash = window.location.hash
+		const match = hash.match(/^#news-(\d+)$/)
+		return match ? parseInt(match[1], 10) : null
+	})
 	const ref = useRef(null)
 	const isInView = useInView(ref, { once: true, margin: '-100px' })
 	
 	useEffect(() => {
-		const hash = window.location.hash
-		const match = hash.match(/^#news-(\d+)$/)
-		if (match) {
-			setPostId(parseInt(match[1], 10))
+		const handleHashChange = () => {
+			const hash = window.location.hash
+			const match = hash.match(/^#news-(\d+)$/)
+			if (match) {
+				setPostId(parseInt(match[1], 10))
+			} else {
+				setPostId(null)
+			}
 		}
+		
+		// Check immediately
+		handleHashChange()
+		
+		// Listen for hash changes
+		window.addEventListener('hashchange', handleHashChange)
+		return () => window.removeEventListener('hashchange', handleHashChange)
 	}, [])
 	
-	if (!postId) return null
-	
 	const post = newsItemsData.find(p => p.id === postId)
-	if (!post) return null
+	
+	if (!postId || !post) {
+		return (
+			<div style={{ padding: '100px 20px', textAlign: 'center' }}>
+				<p>News item not found. <a href="#news">Return to Newsroom</a></p>
+			</div>
+		)
+	}
 	
 	// SEO for news post
 	useSEO({
@@ -5692,6 +5994,9 @@ export default function App() {
 			else if (hash.match(/^#case-\d+$/)) setCurrentPage('case-study')
 			else if (hash === '#cases' || hash === '#case-studies') setCurrentPage('case-studies')
 			else setCurrentPage('home')
+			
+			// Scroll to top when navigating to a new page
+			window.scrollTo({ top: 0, behavior: 'smooth' })
 		}
 		handleHashChange()
 		window.addEventListener('hashchange', handleHashChange)
