@@ -2,8 +2,6 @@ import React, { useState, useRef, useEffect } from 'react'
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Cpu, Zap, Shield, BarChart3, Calendar, Users, TrendingUp, MessageSquare, DollarSign, CheckCircle2, Clock, Target, Rocket, Phone, Mail, MapPin, Sparkles, Globe, ArrowRight, X, FileText, Lock, Layers, Bot, Settings, Building2, Newspaper, BookOpen, FileText as CaseStudy, Video, Film, Mic, PlayCircle, Languages, Send, Linkedin, Twitter, ExternalLink, Search, User, TrendingDown, Award, Briefcase, ArrowLeft, Share2, Instagram, Facebook, Menu } from 'lucide-react'
 import { useSEO } from './hooks/useSEO'
-import { SpeedInsights } from '@vercel/speed-insights/react'
-import { Analytics } from '@vercel/analytics/react'
 
 function ProductDropdown() {
 	return (
@@ -6225,8 +6223,6 @@ export default function App() {
 			<PrivacyPolicy />
 			<TermsOfService />
 			<Security />
-			<SpeedInsights />
-			<Analytics />
 		</>
 	)
 }
