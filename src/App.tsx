@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Cpu, Zap, Shield, BarChart3, Calendar, Users, TrendingUp, MessageSquare, DollarSign, CheckCircle2, Clock, Target, Rocket, Phone, Mail, MapPin, Sparkles, Globe, ArrowRight, X, FileText, Lock, Layers, Bot, Settings, Building2, Newspaper, BookOpen, FileText as CaseStudy, Video, Film, Mic, PlayCircle, Languages, Send, Linkedin, Twitter, ExternalLink, Search, User, TrendingDown, Award, Briefcase, ArrowLeft, Share2, Instagram, Facebook, Menu } from 'lucide-react'
 import { useSEO } from './hooks/useSEO'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 
 function ProductDropdown() {
 	return (
@@ -5125,6 +5126,11 @@ function ContactPage() {
 				body: JSON.stringify(formData),
 			})
 			
+			if (!response.ok && response.status === 0) {
+				// Network error or CORS issue
+				throw new Error('Network error: Unable to reach server. Please check your connection.')
+			}
+			
 			const data = await response.json()
 			
 			if (response.ok && data.success) {
@@ -5142,7 +5148,14 @@ function ContactPage() {
 				}
 			}
 		} catch (error) {
-			setSubmitStatus({ type: 'error', message: 'Network error. Please check your connection and try again.' })
+			console.error('Contact form error:', error)
+			if (error instanceof TypeError && error.message.includes('fetch')) {
+				setSubmitStatus({ type: 'error', message: 'Network error: Unable to connect to server. Please check your internet connection and try again.' })
+			} else if (error instanceof Error) {
+				setSubmitStatus({ type: 'error', message: error.message })
+			} else {
+				setSubmitStatus({ type: 'error', message: 'Network error. Please check your connection and try again.' })
+			}
 		} finally {
 			setIsSubmitting(false)
 		}
@@ -6223,6 +6236,7 @@ export default function App() {
 			<PrivacyPolicy />
 			<TermsOfService />
 			<Security />
+			<SpeedInsights />
 		</>
 	)
 }
