@@ -572,60 +572,62 @@ function Hero() {
 	)
 }
 
-function VirtualTeamSection() {
+function BrandTrustSection() {
 	const ref = useRef(null)
 	const isInView = useInView(ref, { once: true, margin: '-50px' })
 	
-	const features = [
-		{ title: 'Automate', desc: 'Tasks, reminders & campaigns run on autopilot' },
-		{ title: 'Connect', desc: 'Unified inbox across chat, call & socials' },
-		{ title: 'Analyze', desc: 'Predictive insights & visual dashboards' },
+	// Brand logos - you can replace these with actual brand logos/images
+	const brands = [
+		{ name: 'TechCorp', logo: 'TC' },
+		{ name: 'InnovateAI', logo: 'IA' },
+		{ name: 'CloudSync', logo: 'CS' },
+		{ name: 'DataFlow', logo: 'DF' },
+		{ name: 'SmartBiz', logo: 'SB' },
+		{ name: 'FutureTech', logo: 'FT' },
+		{ name: 'DigitalEdge', logo: 'DE' },
+		{ name: 'NextGen', logo: 'NG' },
+		{ name: 'ProActive', logo: 'PA' },
+		{ name: 'EliteSolutions', logo: 'ES' },
 	]
+	
+	// Duplicate brands for seamless infinite scroll
+	const duplicatedBrands = [...brands, ...brands]
 	
 	return (
 		<motion.section 
-			className="section team-section"
+			className="brand-trust-section"
 			ref={ref}
-			initial={{ opacity: 0, y: 30 }}
-			animate={isInView ? { opacity: 1, y: 0 } : {}}
+			initial={{ opacity: 0 }}
+			animate={isInView ? { opacity: 1 } : {}}
 			transition={{ duration: 0.6 }}
 		>
-			<div className="container team-container">
-				<div className="team-content">
-					<h3 className="team-title">AI Virtual Team that Takes Responsibility for Your Business</h3>
-					<p className="team-sub">
-						Meet Ara and the team, the backbone of the AIX platform. They work seamlessly together to grow your business and boost its revenue.
-					</p>
-					<div className="team-cta">
-						<a className="btn btn-primary btn-gold" href="#contact">Start Now</a>
-					</div>
-					<div className="team-features">
-						{features.map((feature, i) => (
+			<div className="container">
+				<motion.div
+					className="brand-trust-header"
+					initial={{ opacity: 0, y: 20 }}
+					animate={isInView ? { opacity: 1, y: 0 } : {}}
+					transition={{ delay: 0.2 }}
+				>
+					<p className="brand-trust-label">Trusted by Industry Leaders</p>
+					<h3 className="brand-trust-title">Powering Innovation Across Industries</h3>
+				</motion.div>
+				
+				<div className="brand-slider-wrapper">
+					<div className="brand-slider-track">
+						{duplicatedBrands.map((brand, index) => (
 							<motion.div
-								key={i}
-								className="team-feature-item"
-								initial={{ opacity: 0, x: -20 }}
-								animate={isInView ? { opacity: 1, x: 0 } : {}}
-								transition={{ delay: 0.4 + i * 0.1 }}
+								key={`${brand.name}-${index}`}
+								className="brand-logo-item"
+								whileHover={{ scale: 1.1, y: -5 }}
+								transition={{ duration: 0.2 }}
 							>
-								<div className="team-feature-arrow">→</div>
-								<div className="team-feature-content">
-									<h4 className="team-feature-title">{feature.title}</h4>
-									<p className="team-feature-desc">{feature.desc}</p>
+								<div className="brand-logo">
+									{/* Replace with actual logo image: <img src={brand.imageUrl} alt={brand.name} /> */}
+									<span className="brand-logo-text">{brand.logo}</span>
 								</div>
+								<span className="brand-name">{brand.name}</span>
 							</motion.div>
 						))}
-					</div>
-				</div>
-				<div className="team-visual">
-					<div className="team-portrait">
-						<img src="/images/products/ChatGPT%20Image%20Nov%2012,%202025,%2011_25_49%20AM.png" alt="Ara — AI Agent" />
-						<div className="team-badge">Ready to Work</div>
-					</div>
-					<div className="team-stats">
-						<div className="stat"><div className="stat-value gold">Always</div><div className="stat-label">On Duty</div></div>
-						<div className="stat"><div className="stat-value">98%</div><div className="stat-label">Success Rate</div></div>
-						<div className="stat"><div className="stat-value">60%</div><div className="stat-label">Cost Savings</div></div>
 					</div>
 				</div>
 			</div>
@@ -5083,16 +5085,46 @@ function ContactPage() {
 		message: ''
 	})
 	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' })
 	
-	const handleSubmit = (e: React.FormEvent) => {
+	// API URL - use environment variable or default to localhost
+	const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+	
+	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
 		setIsSubmitting(true)
-		// Simulate form submission
-		setTimeout(() => {
+		setSubmitStatus({ type: null, message: '' })
+		
+		try {
+			const response = await fetch(`${API_URL}/api/contact/`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(formData),
+			})
+			
+			const data = await response.json()
+			
+			if (response.ok && data.success) {
+				setSubmitStatus({ type: 'success', message: data.message || 'Thank you for your message! We\'ll get back to you soon.' })
+				setFormData({ name: '', email: '', company: '', phone: '', subject: '', message: '' })
+			} else {
+				// Handle validation errors
+				if (data.errors) {
+					const errorMessages = Object.entries(data.errors)
+						.map(([field, errors]: [string, any]) => `${field}: ${Array.isArray(errors) ? errors.join(', ') : errors}`)
+						.join('\n')
+					setSubmitStatus({ type: 'error', message: `Please fix the following errors:\n${errorMessages}` })
+				} else {
+					setSubmitStatus({ type: 'error', message: data.message || 'Failed to send message. Please try again later.' })
+				}
+			}
+		} catch (error) {
+			setSubmitStatus({ type: 'error', message: 'Network error. Please check your connection and try again.' })
+		} finally {
 			setIsSubmitting(false)
-			alert('Thank you for your message! We\'ll get back to you soon.')
-			setFormData({ name: '', email: '', company: '', phone: '', subject: '', message: '' })
-		}, 1000)
+		}
 	}
 	
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -5159,6 +5191,11 @@ function ContactPage() {
 								<p className="contact-form-subtitle">
 									Fill out the form below and we'll get back to you within 24 hours.
 								</p>
+								{submitStatus.type && (
+									<div className={`contact-form-message ${submitStatus.type === 'success' ? 'contact-form-message-success' : 'contact-form-message-error'}`}>
+										{submitStatus.type === 'success' ? '✓' : '✗'} {submitStatus.message}
+									</div>
+								)}
 								<form onSubmit={handleSubmit} className="contact-form">
 									<div className="contact-form-row">
 										<div className="contact-form-group">
@@ -6150,7 +6187,7 @@ export default function App() {
 			) : (
 				<>
 					<Hero />
-					<VirtualTeamSection />
+					<BrandTrustSection />
 					<FutureColleagues />
 					<AgentFeaturesCard />
 					<AdvancedTechnology />
