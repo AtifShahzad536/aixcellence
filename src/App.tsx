@@ -572,62 +572,84 @@ function Hero() {
 	)
 }
 
-function BrandTrustSection() {
+function VirtualTeamSection() {
 	const ref = useRef(null)
 	const isInView = useInView(ref, { once: true, margin: '-50px' })
 	
-	// Brand logos - you can replace these with actual brand logos/images
-	const brands = [
-		{ name: 'TechCorp', logo: 'TC' },
-		{ name: 'InnovateAI', logo: 'IA' },
-		{ name: 'CloudSync', logo: 'CS' },
-		{ name: 'DataFlow', logo: 'DF' },
-		{ name: 'SmartBiz', logo: 'SB' },
-		{ name: 'FutureTech', logo: 'FT' },
-		{ name: 'DigitalEdge', logo: 'DE' },
-		{ name: 'NextGen', logo: 'NG' },
-		{ name: 'ProActive', logo: 'PA' },
-		{ name: 'EliteSolutions', logo: 'ES' },
+	const features = [
+		{ title: 'Automate', desc: 'Tasks, reminders & campaigns run on autopilot' },
+		{ title: 'Connect', desc: 'Unified inbox across chat, call & socials' },
+		{ title: 'Analyze', desc: 'Predictive insights & visual dashboards' },
 	]
-	
-	// Duplicate brands for seamless infinite scroll
-	const duplicatedBrands = [...brands, ...brands]
 	
 	return (
 		<motion.section 
-			className="brand-trust-section"
+			className="section team-section"
 			ref={ref}
-			initial={{ opacity: 0 }}
-			animate={isInView ? { opacity: 1 } : {}}
+			initial={{ opacity: 0, y: 30 }}
+			animate={isInView ? { opacity: 1, y: 0 } : {}}
 			transition={{ duration: 0.6 }}
 		>
-			<div className="container">
-				<motion.div
-					className="brand-trust-header"
-					initial={{ opacity: 0, y: 20 }}
-					animate={isInView ? { opacity: 1, y: 0 } : {}}
-					transition={{ delay: 0.2 }}
-				>
-					<p className="brand-trust-label">Trusted by Industry Leaders</p>
-					<h3 className="brand-trust-title">Powering Innovation Across Industries</h3>
-				</motion.div>
-				
-				<div className="brand-slider-wrapper">
-					<div className="brand-slider-track">
-						{duplicatedBrands.map((brand, index) => (
+			<div className="container team-container">
+				<div className="team-content">
+					<h3 className="team-title">Your Intelligent AI Workforce, Always Ready</h3>
+					<p className="team-sub">
+						Meet ARA and AXE your dedicated AI agents working around the clock to elevate your business. ARA handles customer interactions with precision and empathy, while AXE creates compelling video content that engages your audience. Together, they form the foundation of the AIXcellence platform, delivering seamless automation that drives growth and maximizes efficiency.
+					</p>
+					<div className="team-cta">
+						<a className="btn btn-primary btn-gold" href="#contact">Get Started Today</a>
+					</div>
+					<div className="team-features">
+						{features.map((feature, i) => (
 							<motion.div
-								key={`${brand.name}-${index}`}
-								className="brand-logo-item"
-								whileHover={{ scale: 1.1, y: -5 }}
-								transition={{ duration: 0.2 }}
+								key={i}
+								className="team-feature-item"
+								initial={{ opacity: 0, x: -20 }}
+								animate={isInView ? { opacity: 1, x: 0 } : {}}
+								transition={{ delay: 0.4 + i * 0.1 }}
 							>
-								<div className="brand-logo">
-									{/* Replace with actual logo image: <img src={brand.imageUrl} alt={brand.name} /> */}
-									<span className="brand-logo-text">{brand.logo}</span>
+								<div className="team-feature-arrow">→</div>
+								<div className="team-feature-content">
+									<h4 className="team-feature-title">{feature.title}</h4>
+									<p className="team-feature-desc">{feature.desc}</p>
 								</div>
-								<span className="brand-name">{brand.name}</span>
 							</motion.div>
 						))}
+					</div>
+				</div>
+				<div className="team-visual">
+					<div className="team-agents-grid">
+						<motion.div 
+							className="team-portrait team-portrait-ara"
+							initial={{ opacity: 0, scale: 0.9 }}
+							animate={isInView ? { opacity: 1, scale: 1 } : {}}
+							transition={{ delay: 0.3, duration: 0.5 }}
+						>
+							<img src="/images/products/ChatGPT%20Image%20Nov%2012,%202025,%2011_25_49%20AM.png" alt="ARA Agent — Customer Intelligence" />
+							<div className="team-badge team-badge-ara">
+								<Bot size={14} style={{ marginRight: '4px' }} />
+								ARA Agent
+							</div>
+							<div className="team-agent-status">24/7 Active</div>
+						</motion.div>
+						<motion.div 
+							className="team-portrait team-portrait-axe"
+							initial={{ opacity: 0, scale: 0.9 }}
+							animate={isInView ? { opacity: 1, scale: 1 } : {}}
+							transition={{ delay: 0.5, duration: 0.5 }}
+						>
+							<img src="/images/products/ChatGPT%20Image%20Nov%2014,%202025,%2003_08_07%20PM.png" alt="AXE Agent — Video Intelligence" />
+							<div className="team-badge team-badge-axe">
+								<Video size={14} style={{ marginRight: '4px' }} />
+								AXE Agent
+							</div>
+							<div className="team-agent-status">Ready to Create</div>
+						</motion.div>
+					</div>
+					<div className="team-stats">
+						<div className="stat"><div className="stat-value gold">Always</div><div className="stat-label">On Duty</div></div>
+						<div className="stat"><div className="stat-value">98%</div><div className="stat-label">Success Rate</div></div>
+						<div className="stat"><div className="stat-value">60%</div><div className="stat-label">Cost Savings</div></div>
 					</div>
 				</div>
 			</div>
@@ -6187,7 +6209,7 @@ export default function App() {
 			) : (
 				<>
 					<Hero />
-					<BrandTrustSection />
+					<VirtualTeamSection />
 					<FutureColleagues />
 					<AgentFeaturesCard />
 					<AdvancedTechnology />
