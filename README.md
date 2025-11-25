@@ -59,21 +59,37 @@ npm run preview
 
 ## 🌐 Deployment
 
-This website is automatically deployed to **Vercel** via CI/CD pipeline.
+This website is automatically deployed to **Vercel** via GitHub integration.
 
-### Manual Deployment
+### Automatic Deployment (Recommended)
 
-1. Install Vercel CLI: `npm i -g vercel`
-2. Run: `vercel`
-3. Follow the prompts
+1. Go to [Vercel Dashboard](https://vercel.com/dashboard)
+2. Click **"Add New Project"**
+3. Import GitHub repository: `muhammadwahaib/aixcellence`
+4. Vercel will auto-detect Vite configuration
+5. Click **"Deploy"**
 
-Or connect your GitHub repository directly on [vercel.com](https://vercel.com)
+**That's it!** Every push to `main` will automatically deploy.
 
-### CI/CD Pipeline
+### Manual Deployment (CLI)
 
-The project uses GitHub Actions for continuous integration and deployment:
-- **On Push to Main**: Automatically builds and deploys to Vercel
-- **On Pull Request**: Runs build checks and preview deployment
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Login
+vercel login
+
+# Deploy
+vercel --prod
+```
+
+### Environment Variables (Optional)
+
+If needed, add in Vercel Dashboard → Project Settings → Environment Variables:
+- `VITE_API_URL` = `https://aixcbackend-production.up.railway.app`
+
+See [VERCEL_SETUP.md](./VERCEL_SETUP.md) for detailed setup instructions.
 
 ## 📄 Pages
 
