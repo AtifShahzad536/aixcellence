@@ -53,3 +53,4 @@ git config user.email "your-vercel-email@example.com"
 
 Once permissions are fixed, any push to `main` branch will automatically trigger Vercel deployment.
 
+
