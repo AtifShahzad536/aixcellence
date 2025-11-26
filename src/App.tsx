@@ -5025,8 +5025,8 @@ function ContactPage() {
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' })
 	
-	// API URL - use environment variable or default to localhost
-	const API_URL = import.meta.env.VITE_API_URL || 'https://web-production-1aae28.up.railway.app'
+	// API URL - use environment variable or default to Flask mail center
+	const API_URL = import.meta.env.VITE_API_URL || 'https://aixmail.aixcellence.co'
 	const contactSocialProfiles = [
 		{ icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/share/1C7UCG71Vh/?mibextid=wwXIfr' },
 		{ icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/aixcellenceteam?igsh=MXRremRmZnB3bmluMg%3D%3D&utm_source=qr' },
