@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'framer-motion'
-import { Cpu, Zap, Shield, BarChart3, Calendar, Users, TrendingUp, MessageSquare, DollarSign, CheckCircle2, Clock, Target, Rocket, Phone, Mail, MapPin, Sparkles, Globe, ArrowRight, X, FileText, Lock, Layers, Bot, Settings, Building2, Newspaper, BookOpen, FileText as CaseStudy, Video, Film, Mic, PlayCircle, Languages, Send, Linkedin, Twitter, ExternalLink, Search, User, TrendingDown, Award, Briefcase, ArrowLeft, Share2, Instagram, Facebook, Menu } from 'lucide-react'
+import { Cpu, Zap, Shield, BarChart3, Calendar, Users, TrendingUp, MessageSquare, DollarSign, CheckCircle2, Clock, Target, Rocket, Phone, Mail, MapPin, Sparkles, Globe, ArrowRight, X, FileText, Lock, Layers, Bot, Settings, Building2, Newspaper, BookOpen, FileText as CaseStudy, Video, Film, Mic, PlayCircle, Languages, Send, Linkedin, Twitter, ExternalLink, Search, User, TrendingDown, Award, Briefcase, ArrowLeft, Share2, Instagram, Facebook, Youtube, Menu } from 'lucide-react'
 import { useSEO } from './hooks/useSEO'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
@@ -566,91 +566,6 @@ function Hero() {
 							<span>AI-powered insights</span>
 						</div>
 					</motion.div>
-				</div>
-			</div>
-		</motion.section>
-	)
-}
-
-function VirtualTeamSection() {
-	const ref = useRef(null)
-	const isInView = useInView(ref, { once: true, margin: '-50px' })
-	
-	const features = [
-		{ title: 'Automate', desc: 'Tasks, reminders & campaigns run on autopilot' },
-		{ title: 'Connect', desc: 'Unified inbox across chat, call & socials' },
-		{ title: 'Analyze', desc: 'Predictive insights & visual dashboards' },
-	]
-	
-	return (
-		<motion.section 
-			className="section team-section"
-			ref={ref}
-			initial={{ opacity: 0, y: 30 }}
-			animate={isInView ? { opacity: 1, y: 0 } : {}}
-			transition={{ duration: 0.6 }}
-		>
-			<div className="container team-container">
-				<div className="team-content">
-					<h3 className="team-title">Your Intelligent AI Workforce, Always Ready</h3>
-					<p className="team-sub">
-						Meet ARA and AXE your dedicated AI agents working around the clock to elevate your business. ARA handles customer interactions with precision and empathy, while AXE creates compelling video content that engages your audience. Together, they form the foundation of the AIXcellence platform, delivering seamless automation that drives growth and maximizes efficiency.
-					</p>
-					<div className="team-cta">
-						<a className="btn btn-primary btn-gold" href="#contact">Get Started Today</a>
-					</div>
-					<div className="team-features">
-						{features.map((feature, i) => (
-							<motion.div
-								key={i}
-								className="team-feature-item"
-								initial={{ opacity: 0, x: -20 }}
-								animate={isInView ? { opacity: 1, x: 0 } : {}}
-								transition={{ delay: 0.4 + i * 0.1 }}
-							>
-								<div className="team-feature-arrow">→</div>
-								<div className="team-feature-content">
-									<h4 className="team-feature-title">{feature.title}</h4>
-									<p className="team-feature-desc">{feature.desc}</p>
-								</div>
-							</motion.div>
-						))}
-					</div>
-				</div>
-				<div className="team-visual">
-					<div className="team-agents-grid">
-						<motion.div 
-							className="team-portrait team-portrait-ara"
-							initial={{ opacity: 0, scale: 0.9 }}
-							animate={isInView ? { opacity: 1, scale: 1 } : {}}
-							transition={{ delay: 0.3, duration: 0.5 }}
-						>
-							<img src="/images/products/ChatGPT%20Image%20Nov%2012,%202025,%2011_25_49%20AM.png" alt="ARA Agent — Customer Intelligence" />
-							<div className="team-badge team-badge-ara">
-								<Bot size={14} style={{ marginRight: '4px' }} />
-								ARA Agent
-							</div>
-							<div className="team-agent-status">24/7 Active</div>
-						</motion.div>
-						<motion.div 
-							className="team-portrait team-portrait-axe"
-							initial={{ opacity: 0, scale: 0.9 }}
-							animate={isInView ? { opacity: 1, scale: 1 } : {}}
-							transition={{ delay: 0.5, duration: 0.5 }}
-						>
-							<img src="/images/products/ChatGPT%20Image%20Nov%2014,%202025,%2003_08_07%20PM.png" alt="AXE Agent — Video Intelligence" />
-							<div className="team-badge team-badge-axe">
-								<Video size={14} style={{ marginRight: '4px' }} />
-								AXE Agent
-							</div>
-							<div className="team-agent-status">Ready to Create</div>
-						</motion.div>
-					</div>
-					<div className="team-stats">
-						<div className="stat"><div className="stat-value gold">Always</div><div className="stat-label">On Duty</div></div>
-						<div className="stat"><div className="stat-value">98%</div><div className="stat-label">Success Rate</div></div>
-						<div className="stat"><div className="stat-value">60%</div><div className="stat-label">Cost Savings</div></div>
-					</div>
 				</div>
 			</div>
 		</motion.section>
@@ -1443,9 +1358,10 @@ function Footer() {
 	const ref = useRef(null)
 	const isInView = useInView(ref, { once: true })
 	const socialLinks = [
-		{ icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/company/aixcellence' },
-		{ icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/aixcellence' },
-		{ icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/aixcellence' }
+		{ icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/share/1C7UCG71Vh/?mibextid=wwXIfr' },
+		{ icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/aixcellenceteam?igsh=MXRremRmZnB3bmluMg%3D%3D&utm_source=qr' },
+		{ icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/company/aixcellenceteam/' },
+		{ icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@aixcellenceteam?si=zUSp7FUGa-bXW6pV' },
 	]
 	
 	return (
@@ -5111,6 +5027,12 @@ function ContactPage() {
 	
 	// API URL - use environment variable or default to localhost
 	const API_URL = import.meta.env.VITE_API_URL || 'https://web-production-1aae28.up.railway.app'
+	const contactSocialProfiles = [
+		{ icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/share/1C7UCG71Vh/?mibextid=wwXIfr' },
+		{ icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/aixcellenceteam?igsh=MXRremRmZnB3bmluMg%3D%3D&utm_source=qr' },
+		{ icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/company/aixcellenceteam/' },
+		{ icon: Youtube, label: 'YouTube', href: 'https://youtube.com/@aixcellenceteam?si=zUSp7FUGa-bXW6pV' },
+	]
 	
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
@@ -5391,22 +5313,23 @@ function ContactPage() {
 								<div className="contact-social-section">
 									<h3 className="contact-social-title">Follow Us</h3>
 									<div className="contact-social-links">
-										<motion.a
-											href="#linkedin"
-											className="contact-social-link"
-											whileHover={{ scale: 1.1, y: -2 }}
-											whileTap={{ scale: 0.95 }}
-										>
-											<Linkedin size={20} />
-										</motion.a>
-										<motion.a
-											href="#twitter"
-											className="contact-social-link"
-											whileHover={{ scale: 1.1, y: -2 }}
-											whileTap={{ scale: 0.95 }}
-										>
-											<Twitter size={20} />
-										</motion.a>
+										{contactSocialProfiles.map((profile) => {
+											const IconComponent = profile.icon
+											return (
+												<motion.a
+													key={profile.label}
+													href={profile.href}
+													className="contact-social-link"
+													target="_blank"
+													rel="noopener noreferrer"
+													whileHover={{ scale: 1.1, y: -2 }}
+													whileTap={{ scale: 0.95 }}
+													aria-label={profile.label}
+												>
+													<IconComponent size={20} />
+												</motion.a>
+											)
+										})}
 									</div>
 								</div>
 							</div>
@@ -6221,7 +6144,6 @@ export default function App() {
 			) : (
 				<>
 					<Hero />
-					<VirtualTeamSection />
 					<FutureColleagues />
 					<AgentFeaturesCard />
 					<AdvancedTechnology />
