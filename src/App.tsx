@@ -5110,7 +5110,7 @@ function ContactPage() {
 	const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' })
 	
 	// API URL - use environment variable or default to localhost
-	const API_URL = import.meta.env.VITE_API_URL || 'https://aixcbackend-production.up.railway.app'
+	const API_URL = import.meta.env.VITE_API_URL || 'https://web-production-1aae28.up.railway.app'
 	
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault()
