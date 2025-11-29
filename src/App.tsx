@@ -3,6 +3,7 @@ import { motion, useInView, useScroll, useTransform, AnimatePresence } from 'fra
 import { Cpu, Zap, Shield, BarChart3, Calendar, Users, TrendingUp, MessageSquare, DollarSign, CheckCircle2, Clock, Target, Rocket, Phone, Mail, MapPin, Sparkles, Globe, ArrowRight, X, FileText, Lock, Layers, Bot, Settings, Building2, Newspaper, BookOpen, FileText as CaseStudy, Video, Film, Mic, PlayCircle, Languages, Send, Linkedin, Twitter, ExternalLink, Search, User, TrendingDown, Award, Briefcase, ArrowLeft, Share2, Instagram, Facebook, Youtube, Menu, Eye, EyeOff } from 'lucide-react'
 import { useSEO } from './hooks/useSEO'
 import { SpeedInsights } from '@vercel/speed-insights/react'
+import { Analytics } from '@vercel/analytics/react'
 
 function ProductDropdown() {
 	return (
@@ -6497,7 +6498,7 @@ export default function App() {
 	})
 	const [isImagesLoading, setIsImagesLoading] = useState(false)
 	
-	useEffect(() => {
+		useEffect(() => {
 		const handleHashChange = () => {
 			const hash = window.location.hash
 			if (hash === '#ara-agent') setCurrentPage('ara-agent')
@@ -6516,24 +6517,9 @@ export default function App() {
 			// Scroll to top when navigating to a new page
 			window.scrollTo({ top: 0, behavior: 'smooth' })
 		}
-		
-		// Check hash immediately on mount
 		handleHashChange()
-		
-		// Also check after a short delay to catch hash changes that happen during page load
-		const timeoutId = setTimeout(() => {
-			handleHashChange()
-		}, 100)
-		
-		// Listen for hash changes
 		window.addEventListener('hashchange', handleHashChange)
-		window.addEventListener('popstate', handleHashChange)
-		
-		return () => {
-			clearTimeout(timeoutId)
-			window.removeEventListener('hashchange', handleHashChange)
-			window.removeEventListener('popstate', handleHashChange)
-		}
+		return () => window.removeEventListener('hashchange', handleHashChange)
 	}, [])
 	
 	// Handle image loading for pages with external images
@@ -6701,6 +6687,7 @@ export default function App() {
 			<TermsOfService />
 			<Security />
 			<SpeedInsights />
+			<Analytics />
 		</>
 	)
 }
