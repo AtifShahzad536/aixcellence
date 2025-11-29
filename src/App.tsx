@@ -100,6 +100,18 @@ function ResourcesDropdown() {
 							<div className="product-desc">Success stories from customers</div>
 						</div>
 					</a>
+					<a href="#guide" className="product-item">
+						<span className="product-icon">
+							<BookOpen size={18} />
+						</span>
+						<div>
+							<div className="product-name-wrapper">
+								<div className="product-name">Guide</div>
+								<span className="soon-badge">Soon</span>
+							</div>
+							<div className="product-desc">Comprehensive guides and tutorials</div>
+						</div>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -520,8 +532,7 @@ function Hero() {
 						animate={isInView ? { opacity: 1, y: 0 } : {}}
 						transition={{ delay: 0.4 }}
 					>
-						Equip your team with human-like AI tools and our AI Ara and Axe, who automates your business workflow
-						with human-like personalization and predictive AI automation.
+						Equip your team with human-like AI tools and our AI Ara and Axe, who automates your business workflow with human-like personalization and predictive AI automation.
 					</motion.p>
 					
 					{/* CTA Buttons */}
@@ -658,6 +669,152 @@ function AgentCarousel({ images }: { images: string[] }) {
 				</div>
 			)}
 		</div>
+	)
+}
+
+function AIX1Section() {
+	const ref = useRef(null)
+	const isInView = useInView(ref, { once: true, margin: '-100px' })
+	
+	return (
+		<motion.section 
+			className="section" 
+			id="aix-one"
+			ref={ref}
+			initial={{ opacity: 0 }}
+			animate={isInView ? { opacity: 1 } : {}}
+			transition={{ duration: 0.6 }}
+			style={{ background: 'var(--off-white)', padding: '80px 0' }}
+		>
+			<div className="container">
+				<div className="section-header">
+					<motion.div 
+						className="eyebrow"
+						initial={{ opacity: 0, y: 20 }}
+						animate={isInView ? { opacity: 1, y: 0 } : {}}
+						transition={{ delay: 0.2 }}
+					>
+						<Sparkles size={16} />
+						<span>Our Platform</span>
+					</motion.div>
+					<motion.h2 
+						className="section-title"
+						initial={{ opacity: 0, y: 30 }}
+						animate={isInView ? { opacity: 1, y: 0 } : {}}
+						transition={{ delay: 0.3 }}
+					>
+						Meet <span style={{ background: 'var(--gradient-primary)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>AIX1</span> Your Complete Business Automation Platform
+					</motion.h2>
+					<motion.p 
+						className="section-sub"
+						initial={{ opacity: 0, y: 20 }}
+						animate={isInView ? { opacity: 1, y: 0 } : {}}
+						transition={{ delay: 0.4 }}
+					>
+						The all-in-one AI Automation & CRM platform that captures leads, books appointments, sends reminders, 
+						manages pipelines, replies to customers, and runs your operations 24/7 without increasing team size.
+					</motion.p>
+				</div>
+				
+				<div style={{ 
+					display: 'flex', 
+					flexWrap: 'wrap', 
+					gap: '16px 32px', 
+					marginTop: '48px',
+					justifyContent: 'center',
+					alignItems: 'center'
+				}}>
+					{[
+						{ icon: Zap, title: 'Lead Capture & Management' },
+						{ icon: Calendar, title: 'Smart Appointment Booking' },
+						{ icon: MessageSquare, title: 'AI Customer Communication' },
+						{ icon: TrendingUp, title: 'Pipeline Management' },
+						{ icon: Users, title: 'Team Collaboration' },
+						{ icon: Shield, title: 'Enterprise Security' }
+					].map((feature, idx) => {
+						const IconComponent = feature.icon
+						return (
+							<motion.a
+								key={idx}
+								href="https://aix1.aixcellence.co"
+								target="_blank"
+								rel="noopener noreferrer"
+								initial={{ opacity: 0, y: 20 }}
+								animate={isInView ? { opacity: 1, y: 0 } : {}}
+								transition={{ delay: 0.5 + idx * 0.06, duration: 0.4 }}
+								whileHover={{ scale: 1.05 }}
+								style={{ 
+									display: 'inline-flex',
+									alignItems: 'center',
+									gap: '10px',
+									padding: '12px 20px',
+									borderRadius: '50px',
+									background: 'var(--white)',
+									border: '1px solid var(--medium-gray)',
+									textDecoration: 'none',
+									transition: 'all 0.3s ease',
+									cursor: 'pointer'
+								}}
+								onMouseEnter={(e) => {
+									e.currentTarget.style.background = 'var(--gradient-subtle)'
+									e.currentTarget.style.borderColor = 'var(--aix-cyan)'
+								}}
+								onMouseLeave={(e) => {
+									e.currentTarget.style.background = 'var(--white)'
+									e.currentTarget.style.borderColor = 'var(--medium-gray)'
+								}}
+							>
+								<IconComponent size={18} style={{ color: 'var(--aix-cyan)', flexShrink: 0 }} />
+								<span style={{ 
+									fontSize: 'var(--text-base)', 
+									fontWeight: 'var(--font-medium)', 
+									color: 'var(--text-dark)',
+									whiteSpace: 'nowrap'
+								}}>
+									{feature.title}
+								</span>
+							</motion.a>
+						)
+					})}
+				</div>
+				
+				<motion.div 
+					style={{ 
+						textAlign: 'center', 
+						marginTop: '64px',
+						display: 'flex',
+						gap: '16px',
+						justifyContent: 'center',
+						flexWrap: 'wrap'
+					}}
+					initial={{ opacity: 0, y: 20 }}
+					animate={isInView ? { opacity: 1, y: 0 } : {}}
+					transition={{ delay: 1.1 }}
+				>
+					<motion.a 
+						href="https://aix1.aixcellence.co"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="btn btn-hero-primary-new"
+						whileHover={{ scale: 1.05, y: -2 }}
+						whileTap={{ scale: 0.95 }}
+					>
+						Explore AIX1 Platform
+						<ArrowRight size={20} style={{ marginLeft: '8px' }} />
+					</motion.a>
+					<motion.a 
+						href="https://aix1.aixcellence.co#contact"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="btn btn-hero-secondary-new"
+						whileHover={{ scale: 1.05, y: -2 }}
+						whileTap={{ scale: 0.95 }}
+					>
+						Get a Demo
+					</motion.a>
+				</motion.div>
+			</div>
+		</motion.section>
 	)
 }
 
@@ -1472,6 +1629,10 @@ function Footer() {
 					<ul>
 						<li><a href="#blog">Blogs</a></li>
 						<li><a href="#cases">Case Studies</a></li>
+						<li>
+							<a href="#guide">Guide</a>
+							<span className="soon-badge">Soon</span>
+						</li>
 					</ul>
 				</motion.div>
 
@@ -5025,8 +5186,8 @@ function ContactPage() {
 	const [isSubmitting, setIsSubmitting] = useState(false)
 	const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' })
 	
-	// API URL - use environment variable or default to Flask mail center
-	const API_URL = import.meta.env.VITE_API_URL || 'https://aixmail.aixcellence.co'
+	// API URL - use environment variable or default to Supabase Edge Function
+	const API_URL = import.meta.env.VITE_API_URL || 'https://slywhefjsrzluticwxsm.supabase.co/functions/v1/contact'
 	const contactSocialProfiles = [
 		{ icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/share/1C7UCG71Vh/?mibextid=wwXIfr' },
 		{ icon: Instagram, label: 'Instagram', href: 'https://www.instagram.com/aixcellenceteam?igsh=MXRremRmZnB3bmluMg%3D%3D&utm_source=qr' },
@@ -5040,7 +5201,8 @@ function ContactPage() {
 		setSubmitStatus({ type: null, message: '' })
 		
 		try {
-			const response = await fetch(`${API_URL}/api/contact/`, {
+			// Send contact form directly to Supabase Edge Function / Flask (if VITE_API_URL is set)
+			const response = await fetch(API_URL, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -5057,7 +5219,7 @@ function ContactPage() {
 			
 			if (response.ok && data.success) {
 				setSubmitStatus({ type: 'success', message: data.message || 'Thank you for your message! We\'ll get back to you soon.' })
-				setFormData({ name: '', email: '', company: '', phone: '', subject: '', message: '' })
+			setFormData({ name: '', email: '', company: '', phone: '', subject: '', message: '' })
 			} else {
 				// Handle validation errors
 				if (data.errors) {
@@ -5316,18 +5478,18 @@ function ContactPage() {
 										{contactSocialProfiles.map((profile) => {
 											const IconComponent = profile.icon
 											return (
-												<motion.a
+										<motion.a
 													key={profile.label}
 													href={profile.href}
-													className="contact-social-link"
+											className="contact-social-link"
 													target="_blank"
 													rel="noopener noreferrer"
-													whileHover={{ scale: 1.1, y: -2 }}
-													whileTap={{ scale: 0.95 }}
+											whileHover={{ scale: 1.1, y: -2 }}
+											whileTap={{ scale: 0.95 }}
 													aria-label={profile.label}
-												>
+										>
 													<IconComponent size={20} />
-												</motion.a>
+										</motion.a>
 											)
 										})}
 									</div>
@@ -6144,6 +6306,7 @@ export default function App() {
 			) : (
 				<>
 					<Hero />
+					<AIX1Section />
 					<FutureColleagues />
 					<AgentFeaturesCard />
 					<AdvancedTechnology />
