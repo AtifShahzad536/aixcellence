@@ -6497,7 +6497,7 @@ export default function App() {
 	})
 	const [isImagesLoading, setIsImagesLoading] = useState(false)
 	
-		useEffect(() => {
+	useEffect(() => {
 		const handleHashChange = () => {
 			const hash = window.location.hash
 			if (hash === '#ara-agent') setCurrentPage('ara-agent')
@@ -6516,9 +6516,24 @@ export default function App() {
 			// Scroll to top when navigating to a new page
 			window.scrollTo({ top: 0, behavior: 'smooth' })
 		}
+		
+		// Check hash immediately on mount
 		handleHashChange()
+		
+		// Also check after a short delay to catch hash changes that happen during page load
+		const timeoutId = setTimeout(() => {
+			handleHashChange()
+		}, 100)
+		
+		// Listen for hash changes
 		window.addEventListener('hashchange', handleHashChange)
-		return () => window.removeEventListener('hashchange', handleHashChange)
+		window.addEventListener('popstate', handleHashChange)
+		
+		return () => {
+			clearTimeout(timeoutId)
+			window.removeEventListener('hashchange', handleHashChange)
+			window.removeEventListener('popstate', handleHashChange)
+		}
 	}, [])
 	
 	// Handle image loading for pages with external images
