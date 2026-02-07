@@ -74,7 +74,7 @@ export function AIPlatformPreview() {
                             paddingBottom: '0.1em' // Prevent clipper descenders
                         }}
                     >
-                        <span className="text-3xl md:text-5xl lg:text-[3.75rem] block">
+                        <span className="text-2xl md:text-5xl lg:text-[3.75rem] block">
                             {headline}
                         </span>
                     </motion.h2>

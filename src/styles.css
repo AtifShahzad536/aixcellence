@@ -632,7 +632,7 @@ strong {
 }
 
 .hero-headline-new {
-	font-size: clamp(48px, 7vw, 72px);
+	font-size: clamp(32px, 7vw, 72px);
 	font-weight: var(--font-bold);
 	color: var(--text-dark);
 	margin: 0 0 24px 0;
@@ -7956,7 +7956,7 @@ strong {
 	overflow: hidden;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	padding: 32px;
 	background-size: cover;
 	background-position: center;
@@ -7972,9 +7972,7 @@ strong {
 }
 
 .industry-card-icon-wrapper {
-	position: absolute;
-	top: 32px;
-	left: 32px;
+	position: relative;
 	width: 56px;
 	height: 56px;
 	background: var(--white);
@@ -7984,20 +7982,14 @@ strong {
 	justify-content: center;
 	z-index: 2;
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-@media (max-width: 640px) {
-	.industry-card-icon-wrapper {
-		position: relative;
-		top: 0;
-		left: 0;
-		margin-bottom: 24px;
-	}
+	margin-bottom: 24px;
+	flex-shrink: 0;
 }
 
 .industry-card-body {
 	position: relative;
 	z-index: 2;
+	margin-top: auto;
 }
 
 .industry-card-title-new {
@@ -8093,7 +8085,7 @@ strong {
 	}
 
 	.industry-card-body {
-		margin-top: 0;
+		margin-top: auto;
 	}
 }
 
