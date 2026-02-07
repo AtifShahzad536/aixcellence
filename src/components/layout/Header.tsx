@@ -151,7 +151,9 @@ export function Header() {
 					>
 						<div className="mobile-menu-content">
 							<div className="mobile-menu-header">
-								<img className="mobile-menu-logo" src="/images/logos/fulllogo_nobuffer.jpg" alt="AIXcellence logo" />
+								<Link to="/" onClick={() => setMobileMenuOpen(false)}>
+									<img className="mobile-menu-logo" src="/images/logos/fulllogo_nobuffer.jpg" alt="AIXcellence logo" />
+								</Link>
 								<button
 									className="mobile-menu-close"
 									onClick={() => {
@@ -320,7 +322,9 @@ export function Header() {
 				<div className="container nav">
 					<div className="nav-container-left">
 						<motion.div className="nav-left" whileHover={{ scale: 1.02 }}>
-							<img className="logo" src="/images/logos/fulllogo_nobuffer.jpg" alt="AIXcellence logo" />
+							<Link to="/">
+								<img className="logo" src="/images/logos/fulllogo_nobuffer.jpg" alt="AIXcellence logo" />
+							</Link>
 						</motion.div>
 						<nav className="nav-center" onMouseLeave={() => setOpen(null)}>
 							{links.map((item, idx) => (
