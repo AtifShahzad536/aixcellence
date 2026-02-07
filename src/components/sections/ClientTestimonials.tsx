@@ -12,7 +12,21 @@ export function ClientTestimonials() {
     const [touchStart, setTouchStart] = useState(0)
     const [touchEnd, setTouchEnd] = useState(0)
 
+    const [visibleCount, setVisibleCount] = useState(3)
     const clientTestimonials = CLIENT_TESTIMONIALS_DATA
+
+    useEffect(() => {
+        const updateVisibleCount = () => {
+            if (window.innerWidth < 768) {
+                setVisibleCount(1)
+            } else {
+                setVisibleCount(3)
+            }
+        }
+        updateVisibleCount()
+        window.addEventListener('resize', updateVisibleCount)
+        return () => window.removeEventListener('resize', updateVisibleCount)
+    }, [])
 
     const totalTestimonials = clientTestimonials.length
 
@@ -80,32 +94,34 @@ export function ClientTestimonials() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
         >
-            <div className="section-header">
-                <motion.div
-                    className="eyebrow"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                >
-                    <Star size={16} />
-                    <span>Client Success Stories</span>
-                </motion.div>
-                <motion.h2
-                    className="section-title"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                >
-                    What Our Clients Say
-                </motion.h2>
-                <motion.p
-                    className="section-sub"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                >
-                    Real feedback from businesses that have transformed their operations with AIXcellence
-                </motion.p>
+            <div className="container mx-auto px-4">
+                <div className="section-header flex flex-col items-start md:items-center text-left md:text-center">
+                    <motion.div
+                        className="eyebrow"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
+                    >
+                        <Star size={16} />
+                        <span>Client Success Stories</span>
+                    </motion.div>
+                    <motion.h2
+                        className="section-title text-3xl md:text-4xl lg:text-5xl"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                    >
+                        What Our Clients Say
+                    </motion.h2>
+                    <motion.p
+                        className="section-sub max-w-2xl !mx-0 md:!mx-auto"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                    >
+                        Real feedback from businesses that have transformed their operations with AIXcellence
+                    </motion.p>
+                </div>
             </div>
 
             <div className="testimonials-slider-wrapper">
@@ -118,7 +134,7 @@ export function ClientTestimonials() {
                 >
                     <div className="testimonials-grid-view">
                         <AnimatePresence mode="popLayout" initial={false}>
-                            {[0, 1, 2].map((offset) => {
+                            {[...Array(visibleCount)].map((_, offset) => {
                                 const itemIndex = (currentIndex + offset) % totalTestimonials
                                 const testimonial = clientTestimonials[itemIndex]
                                 return (

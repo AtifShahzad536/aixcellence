@@ -11,6 +11,8 @@ export function WhyChooseUs() {
     const [isAutoPlaying, setIsAutoPlaying] = useState(true)
     const constraintsRef = useRef<HTMLDivElement>(null)
     const containerRef = useRef<HTMLDivElement>(null)
+    const [cardWidth, setCardWidth] = useState(320)
+    const [gap, setGap] = useState(32)
 
     // Auto-play functionality
     useEffect(() => {
@@ -22,6 +24,21 @@ export function WhyChooseUs() {
 
         return () => clearInterval(interval)
     }, [isAutoPlaying])
+
+    useEffect(() => {
+        const updateDimensions = () => {
+            if (window.innerWidth < 768) {
+                setCardWidth(window.innerWidth - 40)
+                setGap(20)
+            } else {
+                setCardWidth(320)
+                setGap(32)
+            }
+        }
+        updateDimensions()
+        window.addEventListener('resize', updateDimensions)
+        return () => window.removeEventListener('resize', updateDimensions)
+    }, [])
 
     const handleDragEnd = (_event: any, info: { offset: { x: number } }) => {
         const threshold = 50
@@ -57,38 +74,40 @@ export function WhyChooseUs() {
             ref={ref}
             style={{ background: 'var(--off-white)', padding: '60px 0', position: 'relative' }}
         >
-            <motion.div
-                className="section-header"
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.2 }}
-            >
+            <div className="container mx-auto px-4">
                 <motion.div
-                    className="eyebrow"
+                    className="section-header flex flex-col items-start md:items-center text-left md:text-center"
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ delay: 0.2 }}
                 >
-                    <Award size={16} />
-                    <span>Our Core Advantages</span>
+                    <motion.div
+                        className="eyebrow"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ delay: 0.2 }}
+                    >
+                        <Award size={16} />
+                        <span>Our Core Advantages</span>
+                    </motion.div>
+                    <motion.h2
+                        className="section-title text-3xl md:text-4xl lg:text-5xl"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ delay: 0.3 }}
+                    >
+                        Why Businesses Choose <span style={{ background: 'linear-gradient(135deg, #0A1A2F 0%, #18CBBE 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>AIXcellence</span>
+                    </motion.h2>
+                    <motion.p
+                        className="section-sub max-w-2xl !mx-0 md:!mx-auto"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ delay: 0.4 }}
+                    >
+                        Discover the distinct advantages that make us the preferred partner for businesses seeking transformative AI and software solutions.
+                    </motion.p>
                 </motion.div>
-                <motion.h2
-                    className="section-title"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.3 }}
-                >
-                    Why Businesses Choose <span style={{ background: 'linear-gradient(135deg, #0A1A2F 0%, #18CBBE 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>AIXcellence</span>
-                </motion.h2>
-                <motion.p
-                    className="section-sub"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.4 }}
-                >
-                    Discover the distinct advantages that make us the preferred partner for businesses seeking transformative AI and software solutions.
-                </motion.p>
-            </motion.div>
+            </div>
 
             {/* Carousel Container */}
             <motion.div
@@ -105,7 +124,7 @@ export function WhyChooseUs() {
                     dragConstraints={getDragConstraints()}
                     dragElastic={0.2}
                     onDragEnd={handleDragEnd}
-                    animate={{ x: `calc(50% - 160px - ${currentIndex * 352}px)` }}
+                    animate={{ x: `calc(50% - ${cardWidth / 2}px - ${currentIndex * (cardWidth + gap)}px)` }}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 >
                     {WHY_CHOOSE_US_REASONS.map((reason, idx) => {

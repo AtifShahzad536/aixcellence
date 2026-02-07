@@ -71,11 +71,10 @@ export function AIPlatformPreview() {
                             backgroundClip: 'text',
                             color: 'transparent', // Fallback
                             fontFamily: fontStack,
-                            fontSize: '3rem',
                             paddingBottom: '0.1em' // Prevent clipper descenders
                         }}
                     >
-                        <span className="text-4xl md:text-5xl lg:text-[3.75rem] block">
+                        <span className="text-3xl md:text-5xl lg:text-[3.75rem] block">
                             {headline}
                         </span>
                     </motion.h2>

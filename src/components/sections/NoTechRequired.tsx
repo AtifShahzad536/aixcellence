@@ -64,10 +64,10 @@ export function NoTechRequired() {
                         transition={{ duration: 0.4, ease: "easeOut" }}
                         style={{ originX: 0.5 }}
                     />
-                    <div className="p-8 md:p-12 lg:p-14 text-center">
+                    <div className="px-6 py-8 md:p-12 lg:p-14 text-left md:text-center">
                         {/* Headline */}
                         <h2
-                            className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
+                            className="text-2xl md:text-4xl font-bold mb-4 tracking-tight"
                             style={{ color: '#0A1A2F' }} // Navy
                         >
                             {headline}
@@ -75,14 +75,14 @@ export function NoTechRequired() {
 
                         {/* Subheadline */}
                         <p
-                            className="text-base md:text-lg max-w-3xl mx-auto mb-14 leading-relaxed"
+                            className="text-sm md:text-lg max-w-3xl md:mx-auto mb-8 md:mb-14 leading-relaxed"
                             style={{ color: '#64748B' }} // Slate 500
                         >
                             {subheadline}
                         </p>
 
                         {/* Features Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 text-left">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 text-left">
                             {features.map((feature: { title: string; description: string; icon: string; color: string }, index: number) => {
                                 const Icon = getIcon(feature.icon)
                                 const isGold = feature.color === 'gold'
@@ -90,19 +90,19 @@ export function NoTechRequired() {
                                 return (
                                     <div key={index} className="flex items-start gap-4 lg:gap-5">
                                         <div
-                                            className="w-12 h-12 rounded-lg flex-shrink-0 flex items-center justify-center"
+                                            className="w-10 h-10 md:w-12 md:h-12 rounded-lg flex-shrink-0 flex items-center justify-center"
                                             style={{
                                                 backgroundColor: isGold ? '#FFFBEB' : '#F0FDFA',
                                             }}
                                         >
                                             <Icon
-                                                size={22}
+                                                size={20}
                                                 style={{ color: isGold ? '#D97706' : '#0D9488' }}
                                             />
                                         </div>
                                         <div>
                                             <h3
-                                                className="text-xl font-bold mb-1"
+                                                className="text-lg md:text-xl font-bold mb-1"
                                                 style={{ color: '#0A1A2F' }}
                                             >
                                                 {feature.title}

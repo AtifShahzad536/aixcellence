@@ -16,32 +16,34 @@ export function Industries() {
             id="solutions"
             ref={ref}
         >
-            <div className="section-header">
-                <motion.div
-                    className="eyebrow"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.2 }}
-                >
-                    <Building2 size={16} />
-                    <span>Industry Solutions</span>
-                </motion.div>
-                <motion.h2
-                    className="section-title"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.3 }}
-                >
-                    Industries We <span style={{ background: 'linear-gradient(135deg, #0A1A2F 0%, #18CBBE 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Transformed</span> with Solutions
-                </motion.h2>
-                <motion.p
-                    className="section-sub"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ delay: 0.4 }}
-                >
-                    Discover how we've helped businesses across diverse industries leverage AI to drive growth and efficiency.
-                </motion.p>
+            <div className="container mx-auto px-4">
+                <div className="section-header flex flex-col items-start md:items-center text-left md:text-center">
+                    <motion.div
+                        className="eyebrow"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ delay: 0.2 }}
+                    >
+                        <Building2 size={16} />
+                        <span>Industry Solutions</span>
+                    </motion.div>
+                    <motion.h2
+                        className="section-title text-3xl md:text-4xl lg:text-5xl"
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ delay: 0.3 }}
+                    >
+                        Industries We <span style={{ background: 'linear-gradient(135deg, #0A1A2F 0%, #18CBBE 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Transformed</span> with Solutions
+                    </motion.h2>
+                    <motion.p
+                        className="section-sub max-w-2xl !mx-0 md:!mx-auto"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ delay: 0.4 }}
+                    >
+                        Discover how we've helped businesses across diverse industries leverage AI to drive growth and efficiency.
+                    </motion.p>
+                </div>
             </div>
 
             {/* Industries Grid */}

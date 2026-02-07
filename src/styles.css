@@ -7986,6 +7986,15 @@ strong {
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 640px) {
+	.industry-card-icon-wrapper {
+		position: relative;
+		top: 0;
+		left: 0;
+		margin-bottom: 24px;
+	}
+}
+
 .industry-card-body {
 	position: relative;
 	z-index: 2;
@@ -8073,7 +8082,18 @@ strong {
 	}
 
 	.industry-card-new {
-		height: 400px;
+		height: auto;
+		min-height: 480px;
+		padding: 32px 24px;
+		justify-content: flex-start;
+	}
+
+	.industry-card-overlay-bg {
+		background: linear-gradient(180deg, rgba(10, 26, 47, 0.4) 0%, rgba(10, 26, 47, 0.98) 100%);
+	}
+
+	.industry-card-body {
+		margin-top: 0;
 	}
 }
 
@@ -8284,10 +8304,23 @@ strong {
 }
 
 @media (max-width: 768px) {
+	.why-choose-us-carousel-container {
+		gap: 20px;
+		padding: 20px 0;
+	}
+
 	.why-choose-us-card {
-		min-width: 280px;
-		width: 280px;
+		min-width: calc(100vw - 40px);
+		width: calc(100vw - 40px);
 		padding: 24px;
+		gap: 16px;
+	}
+}
+
+@media (max-width: 480px) {
+	.why-choose-us-card {
+		min-width: calc(100vw - 40px);
+		width: calc(100vw - 40px);
 	}
 }
 
@@ -8341,6 +8374,13 @@ strong {
 	border: 1px solid var(--medium-gray);
 	box-shadow: 0 4px 12px rgba(10, 26, 47, 0.05);
 	transition: all 0.3s ease;
+}
+
+@media (max-width: 480px) {
+	.why-choose-us-results-card {
+		width: 260px;
+		padding: 16px;
+	}
 }
 
 .why-choose-us-results-card:hover {
@@ -8465,12 +8505,19 @@ strong {
 	gap: 24px;
 }
 
+@media (max-width: 768px) {
+	.testimonials-grid-view {
+		grid-template-columns: 1fr;
+	}
+}
+
 .testimonial-slide-card {
 	background: var(--white);
 	border-radius: 24px;
 	padding: 32px 40px;
 	border: 1px solid var(--medium-gray);
 	box-shadow: 0 12px 32px rgba(10, 26, 47, 0.08);
+	height: 100%;
 }
 
 .testimonial-slide-header {
@@ -8606,8 +8653,27 @@ strong {
 }
 
 @media (max-width: 768px) {
+	.testimonials-slider-wrapper {
+		padding: 0 20px;
+	}
+
 	.testimonial-slide-card {
-		padding: 32px;
+		padding: 24px;
+	}
+
+	.testimonial-slide-quote {
+		font-size: 0.9375rem;
+		margin-bottom: 16px;
+	}
+
+	.testimonial-slide-author {
+		padding-top: 16px;
+		gap: 12px;
+	}
+
+	.testimonial-slide-avatar {
+		width: 48px;
+		height: 48px;
 	}
 
 	.slider-nav-btn {
