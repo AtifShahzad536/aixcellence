@@ -15,8 +15,8 @@ interface SEOData {
 
 const defaultSEO: SEOData = {
 	title: 'AIXcellence',
-	description: 'Transform your business with AIXcellence intelligent automation platform. ARA Agent handles 24/7 customer support and bookings. AXE Agent creates professional video content with AI cloning. Enterprise-grade AI automation solutions.',
-	keywords: 'AI automation, intelligent automation, AI agents, customer support AI, AI video generation, voice cloning, video cloning, business automation, AIXcellence, ARA Agent, AXE Agent, AIX One Platform',
+	description: 'Transform your business with AIXcellence intelligent automation platform. Our advanced AI solutions handle 24/7 customer support and bookings, and create professional video content with AI cloning. Enterprise-grade AI automation solutions.',
+	keywords: 'AI automation, intelligent automation, AI agents, customer support AI, AI video generation, voice cloning, video cloning, business automation, AIXcellence, AIX One Platform',
 	image: '/images/logos/FullLogo_Transparent_NoBuffer.png',
 	url: 'https://aixcellence.co',
 	type: 'website',
