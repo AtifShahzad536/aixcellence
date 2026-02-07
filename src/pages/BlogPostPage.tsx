@@ -117,28 +117,33 @@ export const BlogPostPage: React.FC = () => {
                         transition={{ delay: 0.2 }}
                     >
                         <div className="blogpost-meta">
-                            <span className="blogpost-date">{post.date}</span>
                             <span className="blogpost-category">{post.category.replace('-', ' ')}</span>
+                            <span className="blogpost-meta-divider"></span>
+                            <span className="blogpost-date">{post.date}</span>
+                            <span className="blogpost-meta-divider"></span>
                             <span className="blogpost-read-time">{post.readTime}</span>
                         </div>
                         <h1 className="blogpost-title">{post.title}</h1>
                         <div className="blogpost-author">
-                            <div className="author-avatar">
-                                <User size={24} />
+                            <div className="author-avatar-wrapper">
+                                <div className="author-avatar">
+                                    <User size={20} />
+                                </div>
                             </div>
                             <div className="author-details">
-                                <div className="author-name">{post.author}</div>
+                                <div className="author-name">By {post.author}</div>
                                 <div className="author-role">{post.authorRole}</div>
                             </div>
                         </div>
                     </motion.div>
                     <motion.div
-                        className="blogpost-featured-image"
-                        initial={{ opacity: 0, scale: 0.95 }}
+                        className="blogpost-featured-image-wrapper"
+                        initial={{ opacity: 0, scale: 0.98 }}
                         animate={isInView ? { opacity: 1, scale: 1 } : {}}
                         transition={{ delay: 0.4 }}
                     >
-                        <img src={post.image} alt={post.title} />
+                        <img src={post.image} alt={post.title} className="blogpost-featured-image" />
+                        <div className="blogpost-image-accent"></div>
                     </motion.div>
                 </div>
             </motion.section>
