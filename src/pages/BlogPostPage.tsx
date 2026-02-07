@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { ArrowLeft, Twitter, Linkedin, Share2, ArrowRight, User } from 'lucide-react'
+import { ArrowLeft, Twitter, Linkedin, Share2, ArrowRight, User, Calendar, Clock, Tag } from 'lucide-react'
 import { useParams, Link } from 'react-router-dom'
 import { useSEO } from '../hooks/useSEO'
 import { blogPostsData } from '../data/blogPosts'
@@ -15,7 +15,7 @@ export const BlogPostPage: React.FC = () => {
 
     if (!postId || !post) {
         return (
-            <div style={{ padding: '100px 20px', textAlign: 'center' }}>
+            <div style={{ padding: '160px 20px', textAlign: 'center' }}>
                 <p>Blog post not found. <Link to="/blog">Return to Blog</Link></p>
             </div>
         )
@@ -82,6 +82,7 @@ export const BlogPostPage: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
+            className="blogpost-page-root"
         >
             {/* Navigation */}
             <motion.section
@@ -95,8 +96,8 @@ export const BlogPostPage: React.FC = () => {
                         to="/blog"
                         className="blogpost-back-link"
                     >
-                        <ArrowLeft size={20} />
-                        Back to Blog
+                        <ArrowLeft size={16} />
+                        Back to Insights
                     </Link>
                 </div>
             </motion.section>
@@ -117,11 +118,20 @@ export const BlogPostPage: React.FC = () => {
                         transition={{ delay: 0.2 }}
                     >
                         <div className="blogpost-meta">
-                            <span className="blogpost-category">{post.category.replace('-', ' ')}</span>
+                            <span className="blogpost-category">
+                                <Tag size={12} className="meta-icon" />
+                                {post.category.replace('-', ' ')}
+                            </span>
                             <span className="blogpost-meta-divider"></span>
-                            <span className="blogpost-date">{post.date}</span>
+                            <span className="blogpost-date">
+                                <Calendar size={12} className="meta-icon" />
+                                {post.date}
+                            </span>
                             <span className="blogpost-meta-divider"></span>
-                            <span className="blogpost-read-time">{post.readTime}</span>
+                            <span className="blogpost-read-time">
+                                <Clock size={12} className="meta-icon" />
+                                {post.readTime}
+                            </span>
                         </div>
                         <h1 className="blogpost-title">{post.title}</h1>
                         <div className="blogpost-author">
@@ -131,7 +141,7 @@ export const BlogPostPage: React.FC = () => {
                                 </div>
                             </div>
                             <div className="author-details">
-                                <div className="author-name">By {post.author}</div>
+                                <div className="author-name">Written by {post.author}</div>
                                 <div className="author-role">{post.authorRole}</div>
                             </div>
                         </div>
