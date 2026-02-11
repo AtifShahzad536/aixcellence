@@ -9696,9 +9696,9 @@ strong {
 	}
 
 	.login-brand-logo-large {
-		width: 80px;
-		height: 80px;
-		margin-bottom: 20px;
+		height: 120px;
+		width: auto;
+		margin-bottom: 24px;
 	}
 
 	.login-visual-subtitle {
