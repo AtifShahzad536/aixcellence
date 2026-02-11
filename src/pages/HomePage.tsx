@@ -12,6 +12,7 @@ import { CTASection } from '../components/sections/CTASection'
 import { AIPlatformPreview } from '../components/sections/AIPlatformPreview'
 import { NoTechRequired } from '../components/sections/NoTechRequired'
 import { CuttingEdgeAI } from '../components/sections/CuttingEdgeAI'
+import { PlatformAction } from '../components/sections/PlatformAction'
 
 export function HomePage() {
     return (
@@ -28,6 +29,7 @@ export function HomePage() {
             <ServicesOverview />
             <ClientsPartners />
             <WhyChooseUs />
+            <PlatformAction />
             <Industries />
             <ClientTestimonials />
             <Articles />

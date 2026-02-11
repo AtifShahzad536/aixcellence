@@ -323,7 +323,7 @@ export function Header() {
 					<div className="nav-container-left">
 						<motion.div className="nav-left" whileHover={{ scale: 1.02 }}>
 							<Link to="/">
-								<img className="logo" src="/images/logos/fulllogo_nobuffer.jpg" alt="AIXcellence logo" />
+								<img className="logo" src="/images/logos/fulllogo_nobuffer.png" alt="AIXcellence logo" />
 							</Link>
 						</motion.div>
 						<nav className="nav-center" onMouseLeave={() => setOpen(null)}>
