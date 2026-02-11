@@ -12,7 +12,23 @@ interface StatCardProps {
 }
 
 const StatCard: React.FC<StatCardProps> = ({ label, value, subtextText, subtextTrend, icon: Icon }) => (
-    <div className="action-stat-card">
+    <motion.div
+        className="action-stat-card"
+        initial="initial"
+        whileHover="hover"
+        animate="initial"
+    >
+        {/* Animated Top Line */}
+        <motion.div
+            className="card-top-line"
+            variants={{
+                initial: { scaleX: 0, opacity: 0 },
+                hover: { scaleX: 1, opacity: 1 }
+            }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            style={{ originX: 0.5 }}
+        />
+
         <div className="stat-content">
             <span className="stat-label">{label}</span>
             <h3 className="stat-value">{value}</h3>
@@ -24,7 +40,7 @@ const StatCard: React.FC<StatCardProps> = ({ label, value, subtextText, subtextT
         <div className="stat-icon-wrapper">
             <Icon size={24} className="stat-icon" />
         </div>
-    </div>
+    </motion.div>
 )
 
 interface ActionTab {
