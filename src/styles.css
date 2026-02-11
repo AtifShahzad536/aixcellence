@@ -9446,11 +9446,10 @@ strong {
 }
 
 .login-brand-logo-large {
-	height: 60px;
+	height: 100px;
 	width: auto;
 	margin-bottom: 0;
-	filter: brightness(0) invert(1);
-	opacity: 0.95;
+	filter: drop-shadow(0 0 20px rgba(24, 203, 190, 0.3));
 }
 
 .login-visual-title {

@@ -84,7 +84,7 @@ export function LoginPage() {
                         style={{ marginBottom: '32px' }}
                     >
                         <img
-                            src="/images/logos/fulllogo_nobuffer.png"
+                            src="/images/icons/onlyicon.svg"
                             alt="AIX Logo"
                             className="login-brand-logo-large"
                         />
