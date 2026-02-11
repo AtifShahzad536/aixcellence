@@ -672,12 +672,22 @@ strong {
 }
 
 .hero-buttons-new {
-	display: flex;
-	flex-direction: column;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
 	gap: 16px;
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 64px;
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media (max-width: 640px) {
+	.hero-buttons-new {
+		grid-template-columns: 1fr;
+		max-width: 300px;
+	}
 }
 
 .btn-hero-primary-new {
@@ -763,11 +773,7 @@ strong {
 	background: var(--aix-navy);
 }
 
-@media (min-width: 640px) {
-	.hero-buttons-new {
-		flex-direction: row;
-	}
-}
+
 
 @media (min-width: 1024px) {
 	.hero-new {
