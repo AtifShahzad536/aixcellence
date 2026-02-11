@@ -355,10 +355,10 @@ strong {
 
 /* Products Dropdown Layout */
 .product-dropdown-menu-products {
-	width: 1140px !important;
+	width: 1260px !important;
 	max-width: calc(100vw - 40px) !important;
-	left: -120px !important;
-	/* Adjusted to keep it more centered with the wider width */
+	left: -320px !important;
+	/* Adjusted for centered feel at 1260px */
 	right: auto !important;
 }
 
@@ -369,13 +369,13 @@ strong {
 
 .product-column-features {
 	display: grid !important;
-	grid-template-columns: repeat(3, 1fr) !important;
-	/* 3 Columns for 10 items = 4 rows */
-	gap: 16px 24px !important;
+	grid-template-columns: repeat(4, 1fr) !important;
+	/* 4 Columns for 10 items = 3 rows */
+	gap: 16px 20px !important;
 }
 
 .product-column-features .product-column-title-wrapper {
-	grid-column: span 3;
+	grid-column: span 4;
 }
 
 /* Solutions Dropdown Layout */
