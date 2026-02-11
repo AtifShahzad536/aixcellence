@@ -9414,16 +9414,17 @@ strong {
 
 .login-visual-side {
 	flex: 1;
-	background: radial-gradient(circle at top left, #0E4B8E, transparent),
-		radial-gradient(circle at bottom right, #18CBBE, transparent),
+	background: radial-gradient(circle at 20% 20%, #0E4B8E 0%, transparent 60%),
+		radial-gradient(circle at 80% 80%, #18CBBE 0%, transparent 60%),
 		#0A1A2F;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
-	padding: 100px 60px 60px;
+	padding: 160px 60px 60px;
+	/* Aligns content with the cursor area at the top */
 	position: relative;
-	color: var(--white);
+	color: #FFFFFF !important;
 	text-align: center;
 }
 
@@ -9458,16 +9459,16 @@ strong {
 	line-height: 1.2;
 	margin-bottom: 24px;
 	letter-spacing: -0.02em;
-	color: var(--white);
+	color: #FFFFFF !important;
 }
 
 .login-visual-title span {
-	color: var(--aix-cyan);
+	color: var(--aix-cyan) !important;
 }
 
 .login-visual-subtitle {
 	font-size: 1.125rem;
-	color: rgba(255, 255, 255, 0.7);
+	color: rgba(255, 255, 255, 0.9) !important;
 	line-height: 1.6;
 	max-width: 440px;
 	margin: 0 auto;
