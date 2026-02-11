@@ -355,27 +355,39 @@ strong {
 
 /* Products Dropdown Layout */
 .product-dropdown-menu-products {
-	width: 1400px !important;
+	width: 1440px !important;
 	max-width: calc(100vw - 40px) !important;
-	left: -420px !important;
-	/* Adjusted for centered feel at 1400px */
+	left: -440px !important;
+	/* Centered for 1440px */
 	right: auto !important;
 }
 
 .product-dropdown-columns-products {
-	grid-template-columns: 140px 160px 1fr !important;
+	grid-template-columns: 140px 240px 1fr !important;
+	/* Widened Services column */
 	gap: 24px !important;
+}
+
+.product-column-services {
+	display: grid !important;
+	grid-template-columns: repeat(2, 1fr) !important;
+	/* 4 items = 2 rows */
+	gap: 12px 20px !important;
+}
+
+.product-column-services .product-column-title-wrapper {
+	grid-column: span 2;
 }
 
 .product-column-features {
 	display: grid !important;
-	grid-template-columns: repeat(5, 1fr) !important;
-	/* 5 Columns for 10 items = 2 rows */
-	gap: 16px 16px !important;
+	grid-template-columns: repeat(4, 1fr) !important;
+	/* 10 items = 3 rows */
+	gap: 14px 20px !important;
 }
 
 .product-column-features .product-column-title-wrapper {
-	grid-column: span 5;
+	grid-column: span 4;
 }
 
 /* Solutions Dropdown Layout */
