@@ -107,7 +107,7 @@ export function LoginPage() {
             >
                 <div className="login-form-container">
                     <div className="login-header">
-                        <Link to="/" style={{ display: 'inline-block', marginBottom: '32px' }}>
+                        <Link to="/" className="login-form-logo" style={{ display: 'inline-block', marginBottom: '32px' }}>
                             <img src="/images/logos/fulllogo_nobuffer.png" alt="AIXcellence" style={{ height: '32px' }} />
                         </Link>
                         <h2 className="login-title">Welcome Back</h2>

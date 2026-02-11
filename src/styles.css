@@ -9716,4 +9716,8 @@ strong {
 	.login-form-container {
 		max-width: 100%;
 	}
+
+	.login-form-logo {
+		display: none !important;
+	}
 }

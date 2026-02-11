@@ -156,7 +156,7 @@ export function Header() {
 						<div className="mobile-menu-content">
 							<div className="mobile-menu-header">
 								<Link to="/" onClick={() => setMobileMenuOpen(false)}>
-									<img className="mobile-menu-logo" src="/images/logos/fulllogo_nobuffer.jpg" alt="AIXcellence logo" />
+									<img className="mobile-menu-logo" src="/images/logos/fulllogo_nobuffer.png" alt="AIXcellence logo" />
 								</Link>
 								<button
 									className="mobile-menu-close"
