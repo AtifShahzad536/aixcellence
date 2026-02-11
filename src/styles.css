@@ -355,9 +355,9 @@ strong {
 
 /* Products Dropdown Layout */
 .product-dropdown-menu-products {
-	width: 780px !important;
+	width: 720px !important;
 	max-width: calc(100vw - 40px) !important;
-	left: -40px !important;
+	left: 0 !important;
 }
 
 .product-dropdown-columns-products {
@@ -377,9 +377,9 @@ strong {
 
 /* Solutions Dropdown Layout */
 .product-dropdown-menu-solutions {
-	width: 780px !important;
+	width: 720px !important;
 	max-width: calc(100vw - 40px) !important;
-	left: -180px !important;
+	left: -100px !important;
 }
 
 .product-dropdown-columns-solutions {
@@ -391,7 +391,7 @@ strong {
 .product-dropdown-menu-resources {
 	width: 580px !important;
 	max-width: calc(100vw - 40px) !important;
-	left: -280px !important;
+	left: -200px !important;
 	/* Shifting to have more overhang on the right */
 	right: auto !important;
 }
