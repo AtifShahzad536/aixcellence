@@ -752,7 +752,11 @@ strong {
 }
 
 .hero-trust-dot-gold {
-	background: var(--aix-gold);
+	background: var(--aix-cyan);
+}
+
+.hero-trust-dot-teal {
+	background: var(--aix-cyan);
 }
 
 .hero-trust-dot-navy {
