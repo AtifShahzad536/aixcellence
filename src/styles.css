@@ -353,16 +353,52 @@ strong {
 	}
 }
 
+/* Products Dropdown Layout */
+.product-dropdown-menu-products {
+	width: 780px !important;
+	max-width: calc(100vw - 40px) !important;
+	left: -40px !important;
+}
+
+.product-dropdown-columns-products {
+	grid-template-columns: 160px 160px 1fr !important;
+	gap: 24px !important;
+}
+
+.product-column-features {
+	display: grid !important;
+	grid-template-columns: repeat(2, 1fr) !important;
+	gap: 8px 24px !important;
+}
+
+.product-column-features .product-column-title-wrapper {
+	grid-column: span 2;
+}
+
+/* Solutions Dropdown Layout */
 .product-dropdown-menu-solutions {
-	width: 820px !important;
+	width: 780px !important;
 	max-width: calc(100vw - 40px) !important;
 	left: -180px !important;
-	/* Shift left to prevent right-side overflow */
 }
 
 .product-dropdown-columns-solutions {
-	grid-template-columns: 180px 1fr !important;
+	grid-template-columns: 160px 1fr !important;
 	gap: 32px !important;
+}
+
+/* Resources Dropdown Layout */
+.product-dropdown-menu-resources {
+	width: 580px !important;
+	max-width: calc(100vw - 40px) !important;
+	left: -280px !important;
+	/* Shifting to have more overhang on the right */
+	right: auto !important;
+}
+
+.product-dropdown-columns-resources {
+	grid-template-columns: repeat(2, 1fr) !important;
+	gap: 24px !important;
 }
 
 .product-column {

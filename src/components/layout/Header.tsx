@@ -13,7 +13,7 @@ import { DropdownColumn, MobileDropdownColumn } from './DropdownMenu'
 function ProductDropdown() {
 	return (
 		<div className="product-dropdown">
-			<div className="product-dropdown-columns">
+			<div className="product-dropdown-columns product-dropdown-columns-products">
 				<div className="product-column">
 					<div className="product-column-title-wrapper">
 						<h4 className="product-column-title">Platform</h4>
@@ -67,7 +67,7 @@ function SolutionsDropdown() {
 function ResourcesDropdown() {
 	return (
 		<div className="product-dropdown">
-			<div className="product-dropdown-columns">
+			<div className="product-dropdown-columns product-dropdown-columns-resources">
 				<DropdownColumn
 					title="Company"
 					items={NAVIGATION_DATA.resources.company}
@@ -359,7 +359,7 @@ export function Header() {
 											initial={{ opacity: 0, y: -10 }}
 											animate={{ opacity: 1, y: 0 }}
 											exit={{ opacity: 0, y: -10 }}
-											className="dropdown-menu product-dropdown-menu"
+											className="dropdown-menu product-dropdown-menu product-dropdown-menu-products"
 										>
 											<ProductDropdown />
 										</motion.div>
@@ -379,7 +379,7 @@ export function Header() {
 											initial={{ opacity: 0, y: -10 }}
 											animate={{ opacity: 1, y: 0 }}
 											exit={{ opacity: 0, y: -10 }}
-											className="dropdown-menu product-dropdown-menu"
+											className="dropdown-menu product-dropdown-menu product-dropdown-menu-resources"
 										>
 											<ResourcesDropdown />
 										</motion.div>
