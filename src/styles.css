@@ -355,37 +355,26 @@ strong {
 
 /* Products Dropdown Layout */
 .product-dropdown-menu-products {
-	width: 1000px !important;
+	width: 1100px !important;
 	max-width: calc(100vw - 40px) !important;
-	left: -200px !important;
+	left: -240px !important;
 	right: auto !important;
 }
 
 .product-dropdown-columns-products {
 	grid-template-columns: 180px 220px 1fr !important;
-	gap: 32px !important;
+	gap: 40px !important;
 }
 
-/* Vertical items for Services */
-.product-column-services {
-	display: flex !important;
-	flex-direction: column !important;
-	gap: 12px !important;
-}
-
-.product-column-services .product-column-title-wrapper {
-	grid-column: auto;
-}
-
-/* Vertical items for Features (reverting from grid) */
+/* Features in 3 columns to prevent the card from being too tall */
 .product-column-features {
-	display: flex !important;
-	flex-direction: column !important;
-	gap: 12px !important;
+	display: grid !important;
+	grid-template-columns: repeat(3, 1fr) !important;
+	gap: 16px 24px !important;
 }
 
 .product-column-features .product-column-title-wrapper {
-	grid-column: auto;
+	grid-column: span 3;
 }
 
 /* Solutions Dropdown Layout */

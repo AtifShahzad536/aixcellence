@@ -35,7 +35,6 @@ function ProductDropdown() {
 				<DropdownColumn
 					title={NAVIGATION_DATA.services.title}
 					items={NAVIGATION_DATA.services.items}
-					className="product-column-services"
 				/>
 				<DropdownColumn
 					title={NAVIGATION_DATA.features.title}
