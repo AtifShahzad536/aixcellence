@@ -9152,8 +9152,10 @@ strong {
 .action-tab-btn {
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	gap: 10px;
-	padding: 12px 24px;
+	padding: 14px 40px;
+	min-width: 180px;
 	border-radius: 8px;
 	border: none;
 	background: transparent;
@@ -9161,7 +9163,7 @@ strong {
 	font-weight: var(--font-semibold);
 	cursor: pointer;
 	position: relative;
-	transition: color 0.3s ease;
+	transition: all 0.3s ease;
 	white-space: nowrap;
 	z-index: 1;
 }
@@ -9319,7 +9321,7 @@ strong {
 	}
 
 	.stat-value {
-		font-size: 36px;
+		font-size: 32px;
 	}
 
 	.agent-detail-card {
@@ -9332,12 +9334,27 @@ strong {
 
 	.action-tabs {
 		width: 100%;
-		justify-content: flex-start;
-		padding: 8px;
+		justify-content: center;
+		padding: 4px;
+		gap: 2px;
+		border-radius: 10px;
 	}
 
 	.action-tab-btn {
-		padding: 10px 16px;
-		font-size: 14px;
+		padding: 10px 4px;
+		min-width: 0;
+		flex: 1;
+		font-size: 11px;
+		gap: 4px;
+		border-radius: 6px;
+	}
+
+	.action-tab-btn span {
+		display: block;
+	}
+
+	.action-tab-btn svg {
+		width: 12px;
+		height: 12px;
 	}
 }
