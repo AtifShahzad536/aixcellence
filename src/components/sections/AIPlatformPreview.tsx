@@ -135,7 +135,16 @@ export function AIPlatformPreview() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
                         transition={{ delay: 0.5 }}
-                        className="flex flex-col sm:flex-row gap-4"
+                        style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(2, 1fr)',
+                            gap: '12px',
+                            width: '100%',
+                            maxWidth: '420px',
+                            margin: '0 auto',
+                            padding: '0 16px',
+                            boxSizing: 'border-box' as const
+                        }}
                     >
                         {buttons.map((button, index) => (
                             <motion.div
@@ -145,13 +154,24 @@ export function AIPlatformPreview() {
                             >
                                 <Link
                                     to={button.href}
-                                    className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-bold transition-all duration-300"
                                     style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        gap: '6px',
+                                        borderRadius: '10px',
+                                        fontWeight: 700,
+                                        transition: 'all 0.3s ease',
+                                        textDecoration: 'none',
                                         fontFamily: fontStack,
-                                        fontSize: '0.875rem',
+                                        fontSize: 'clamp(12px, 2.5vw, 14px)',
+                                        padding: '12px 16px',
+                                        width: '100%',
+                                        boxSizing: 'border-box' as const,
+                                        whiteSpace: 'nowrap' as const,
                                         ...(button.variant === 'primary'
                                             ? {
-                                                background: 'linear-gradient(135deg, #18CBBE 0%, #0E4B8E 100%)', // Match headline gradient
+                                                background: 'linear-gradient(135deg, #18CBBE 0%, #0E4B8E 100%)',
                                                 color: '#FFFFFF',
                                                 boxShadow: '0 10px 15px -3px rgba(24, 203, 190, 0.3)'
                                             }
@@ -165,7 +185,7 @@ export function AIPlatformPreview() {
                                     }}
                                 >
                                     {button.text}
-                                    {button.variant === 'primary' && <ArrowRight size={18} />}
+                                    {button.variant === 'primary' && <ArrowRight size={16} />}
                                 </Link>
                             </motion.div>
                         ))}

@@ -248,7 +248,7 @@ export function ServicesOverview() {
                             </div>
                         </div>
 
-                        <div className="service-content-footer">
+                        <div className="service-content-footer" style={{ display: 'flex', justifyContent: 'center', marginTop: '24px' }}>
                             <Link
                                 to={currentService.href}
                                 className="service-cta-button"
