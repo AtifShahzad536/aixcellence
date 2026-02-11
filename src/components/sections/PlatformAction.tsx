@@ -132,7 +132,7 @@ export function PlatformAction() {
     const [activeTab, setActiveTab] = useState(ACTION_TABS[0])
 
     return (
-        <Section className="platform-action-section">
+        <Section className="platform-action-section" id="platform-action">
             <div className="container">
                 <div className="section-header text-center mb-12">
                     <h2 className="section-title-gradient mb-4">See The AIX One in Action</h2>

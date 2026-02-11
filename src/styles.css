@@ -9267,55 +9267,100 @@ strong {
 	color: var(--aix-cyan);
 }
 
+/* Global Section Typography (if not already defined) */
+.section-title-gradient {
+	font-size: clamp(32px, 5vw, 42px);
+	font-weight: 800;
+	background: var(--gradient-primary);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
+}
+
+.section-subtitle {
+	font-size: 1.125rem;
+	color: var(--text-muted);
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 1.6;
+}
+
 .agent-detail-card {
-	background: linear-gradient(135deg, #18CBBE 0%, #0A1A2F 100%);
+	background: linear-gradient(135deg, #0A1A2F 0%, #0E4B8E 100%);
 	border-radius: 24px;
 	padding: 40px;
 	color: var(--white);
 	position: relative;
 	overflow: hidden;
+	box-shadow: 0 20px 40px rgba(10, 26, 47, 0.2);
 }
 
 .agent-card-header {
 	display: flex;
 	align-items: center;
 	gap: 12px;
-	margin-bottom: 16px;
+	margin-bottom: 20px;
 }
 
 .agent-icon {
-	color: var(--white);
-	opacity: 0.9;
+	color: var(--aix-cyan);
+	opacity: 1;
 }
 
 .agent-card-title {
-	font-size: 20px;
+	font-size: 24px;
 	font-weight: 700;
 	margin: 0;
 	color: var(--white);
 }
 
 .agent-card-desc {
-	font-size: var(--text-base);
-	line-height: 1.7;
-	opacity: 0.8;
+	font-size: 1.05rem;
+	line-height: 1.8;
+	color: rgba(255, 255, 255, 0.9);
 	margin-bottom: 32px;
-	max-width: 90%;
+	max-width: 95%;
 }
 
 .agent-action-btn {
 	background: var(--white);
-	color: #0A1A2F;
+	color: var(--aix-navy);
 	border: none;
-	padding: 12px 24px;
-	border-radius: 10px;
+	padding: 14px 28px;
+	border-radius: 12px;
 	font-size: var(--text-sm);
 	font-weight: var(--font-bold);
 	cursor: pointer;
-	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s ease;
+}
+
+.agent-action-btn:hover {
+	background: var(--aix-cyan);
+	color: var(--white);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 20px rgba(24, 203, 190, 0.3);
+}
+
+.agent-detail-card ::selection {
+	background: var(--aix-cyan);
+	color: var(--aix-navy);
 }
 
 @media (max-width: 768px) {
+	.section-title-gradient {
+		font-size: 28px;
+		margin-bottom: 16px;
+	}
+
+	.section-subtitle {
+		font-size: 1rem;
+		line-height: 1.5;
+	}
+
 	.stats-cards-grid {
 		grid-template-columns: 1fr;
 	}

@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import {
 	X, Layers, Zap, Cpu, Phone, MessageSquare, FileText, TrendingUp, Mic, Video, Lock, BarChart3, Settings, DollarSign,
-	Heart, GraduationCap, Car, ShoppingCart, Building2, Award, Newspaper, BookOpen, FileText as CaseStudy, Menu
+	Heart, GraduationCap, Car, ShoppingCart, Building2, Award, Newspaper, BookOpen, FileText as CaseStudy, Menu, PlayCircle
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
@@ -17,16 +17,20 @@ function ProductDropdown() {
 				<div className="product-column">
 					<div className="product-column-title-wrapper">
 						<h4 className="product-column-title">Platform</h4>
-						<span className="soon-badge">Soon</span>
 					</div>
-					<Link to="/platform" className="product-item">
-						<span className="product-icon">
-							<Layers size={18} />
-						</span>
-						<div>
-							<div className="product-name">AIX One Platform</div>
-						</div>
-					</Link>
+					{NAVIGATION_DATA.platform.items.map((item, idx) => (
+						<Link key={idx} to={item.path} className="product-item">
+							<span className="product-icon">
+								<item.icon size={18} />
+							</span>
+							<div>
+								<div className="product-name">
+									{item.label}
+									{item.badge && <span className="soon-badge ml-2">{item.badge}</span>}
+								</div>
+							</div>
+						</Link>
+					))}
 				</div>
 				<DropdownColumn
 					title={NAVIGATION_DATA.services.title}
@@ -201,12 +205,14 @@ export function Header() {
 																	<div className="mobile-submenu-section">
 																		<div className="product-column-title-wrapper">
 																			<h4 className="mobile-submenu-title">Platform</h4>
-																			<span className="soon-badge">Soon</span>
 																		</div>
-																		<Link to="/platform" className="mobile-submenu-link" onClick={handleMobileLinkClick}>
-																			<Layers size={18} />
-																			<span>AIX One Platform</span>
-																		</Link>
+																		{NAVIGATION_DATA.platform.items.map((item, idx) => (
+																			<Link key={idx} to={item.path} className="mobile-submenu-link" onClick={handleMobileLinkClick}>
+																				<item.icon size={18} />
+																				<span>{item.label}</span>
+																				{item.badge && <span className="soon-badge ml-2">{item.badge}</span>}
+																			</Link>
+																		))}
 																	</div>
 																	<MobileDropdownColumn
 																		title={NAVIGATION_DATA.services.title}

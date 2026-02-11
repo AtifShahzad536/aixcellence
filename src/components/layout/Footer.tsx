@@ -90,7 +90,7 @@ export function Footer() {
 
                 <FooterColumn
                     title={NAVIGATION_DATA.platform.title}
-                    items={[{ label: 'AIX Platform', path: NAVIGATION_DATA.platform.path, badge: NAVIGATION_DATA.platform.badge }]}
+                    items={NAVIGATION_DATA.platform.items}
                     delay={0.3}
                 />
 

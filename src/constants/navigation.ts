@@ -1,6 +1,6 @@
 import {
     X, Layers, Zap, Cpu, Phone, MessageSquare, FileText, TrendingUp, Mic, Video, Lock, BarChart3, Settings, DollarSign,
-    Heart, GraduationCap, Car, ShoppingCart, Building2, Award, Newspaper, BookOpen, FileText as CaseStudy, Menu, Users
+    Heart, GraduationCap, Car, ShoppingCart, Building2, Award, Newspaper, BookOpen, FileText as CaseStudy, Menu, Users, PlayCircle
 } from 'lucide-react'
 
 export interface NavItem {
@@ -21,9 +21,10 @@ export interface NavSection {
 export const NAVIGATION_DATA = {
     platform: {
         title: 'Platform',
-        badge: 'Soon',
-        path: '/platform',
-        icon: Layers
+        items: [
+            { label: 'AIX One Platform', path: '/platform', icon: Layers, badge: 'Soon' },
+            { label: 'See in Action', path: '/#platform-action', icon: PlayCircle }
+        ]
     },
     services: {
         title: 'Services',
