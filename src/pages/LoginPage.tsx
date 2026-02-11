@@ -81,7 +81,7 @@ export function LoginPage() {
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
-                        style={{ marginBottom: '32px' }}
+                        style={{ marginBottom: '32px', display: 'flex', justifyContent: 'center' }}
                     >
                         <img
                             src="/images/icons/onlyicon.svg"
