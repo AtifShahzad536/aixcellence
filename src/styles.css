@@ -355,13 +355,13 @@ strong {
 
 /* Products Dropdown Layout */
 .product-dropdown-menu-products {
-	width: 720px !important;
+	width: 900px !important;
 	max-width: calc(100vw - 40px) !important;
-	left: 0 !important;
+	left: -100px !important;
 }
 
 .product-dropdown-columns-products {
-	grid-template-columns: 160px 160px 1fr !important;
+	grid-template-columns: 180px 180px 1fr !important;
 	gap: 24px !important;
 }
 
@@ -377,9 +377,10 @@ strong {
 
 /* Solutions Dropdown Layout */
 .product-dropdown-menu-solutions {
-	width: 720px !important;
+	width: 700px !important;
 	max-width: calc(100vw - 40px) !important;
-	left: -100px !important;
+	left: 0 !important;
+	/* Shifted right from -100px */
 }
 
 .product-dropdown-columns-solutions {
@@ -389,10 +390,10 @@ strong {
 
 /* Resources Dropdown Layout */
 .product-dropdown-menu-resources {
-	width: 580px !important;
+	width: 600px !important;
 	max-width: calc(100vw - 40px) !important;
-	left: -200px !important;
-	/* Shifting to have more overhang on the right */
+	left: -80px !important;
+	/* Shifted right from -200px */
 	right: auto !important;
 }
 
@@ -9792,5 +9793,74 @@ strong {
 
 	.login-form-logo {
 		display: none !important;
+	}
+}
+
+/* Case Studies / Portfolio Page Styles */
+.cases-cta-section {
+	padding: 100px 0;
+	background: var(--off-white);
+	text-align: center;
+}
+
+.cases-cta-content {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+.cta-title {
+	font-size: clamp(28px, 4vw, 42px);
+	font-weight: 800;
+	color: var(--text-dark);
+	margin-bottom: 20px;
+}
+
+.cta-subtitle {
+	font-size: 1.15rem;
+	color: var(--text-muted);
+	margin-bottom: 40px;
+	line-height: 1.6;
+}
+
+.cta-actions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 24px;
+	margin-top: 48px;
+}
+
+.cta-actions .btn {
+	padding: 18px 36px;
+	font-size: 1.1rem;
+	font-weight: 700;
+	border-radius: 14px;
+	min-width: 240px;
+}
+
+@media (max-width: 768px) {
+	.cases-cta-section {
+		padding: 60px 0;
+	}
+
+	.cta-actions {
+		display: grid !important;
+		grid-template-columns: repeat(2, 1fr) !important;
+		gap: 12px !important;
+		padding: 0 16px;
+		margin-top: 32px;
+	}
+
+	.cta-actions .btn {
+		min-width: unset !important;
+		width: 100% !important;
+		padding: 12px 8px !important;
+		font-size: 0.85rem !important;
+		border-radius: 10px !important;
+		margin: 0 !important;
+	}
+
+	.cta-actions>div {
+		width: 100% !important;
 	}
 }
