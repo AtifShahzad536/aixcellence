@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
-import { Lock, Mail, Eye, EyeOff, ArrowRight, Shield } from 'lucide-react'
+import { Lock, Mail, Eye, EyeOff, ArrowRight, Shield, X, AlertCircle } from 'lucide-react'
 import { useSEO } from '../hooks/useSEO'
 import { Link } from 'react-router-dom'
 
@@ -12,6 +12,9 @@ export function LoginPage() {
         url: 'https://aixcellence.co/#login',
         canonical: 'https://aixcellence.co/#login'
     })
+
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true, margin: '-100px' })
 
     const [formData, setFormData] = useState({
         email: '',
@@ -27,10 +30,28 @@ export function LoginPage() {
         setSubmitStatus({ type: null, message: '' })
 
         try {
-            await new Promise(resolve => setTimeout(resolve, 1500))
-            // Demo failure scenario
-            throw new Error('Invalid credentials')
+            // TODO: Replace with actual login API endpoint
+            // For now, this is a placeholder that simulates login
+            await new Promise(resolve => setTimeout(resolve, 1000))
+
+            // Simulate login validation - always fail for demo purposes
+            // In production, replace this with actual API call
+            const isValidCredentials = false // This will be replaced with actual API response
+
+            if (isValidCredentials) {
+                // Simulate successful login
+                setSubmitStatus({ type: 'success', message: 'Login successful! Redirecting...' })
+
+                // Redirect to dashboard or home after successful login
+                setTimeout(() => {
+                    window.location.href = '/#home'
+                }, 1500)
+            } else {
+                // Simulate failed login
+                throw new Error('Invalid credentials')
+            }
         } catch (error) {
+            console.error('Login error:', error)
             setSubmitStatus({ type: 'error', message: 'Username or password is incorrect.' })
         } finally {
             setIsSubmitting(false)
@@ -51,19 +72,24 @@ export function LoginPage() {
                 transition={{ duration: 0.8, ease: "easeOut" }}
             >
                 <div className="login-brand-group">
-                    <motion.img
-                        src="/images/icons/onlyicon.svg"
-                        alt="AIX Logo"
-                        className="login-brand-logo-large"
+                    <motion.div
                         animate={{
-                            y: [0, -10, 0],
+                            y: [0, -15, 0],
                         }}
                         transition={{
-                            duration: 4,
+                            duration: 5,
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
-                    />
+                        style={{ marginBottom: '40px' }}
+                    >
+                        <img
+                            src="/images/logos/fulllogo_nobuffer.png"
+                            alt="AIX Logo"
+                            className="login-brand-logo-large"
+                            style={{ height: '60px', width: 'auto' }}
+                        />
+                    </motion.div>
                     <h1 className="login-visual-title">
                         The Future of <span>Business Automation</span> is Here.
                     </h1>
@@ -95,7 +121,7 @@ export function LoginPage() {
                             initial={{ opacity: 0, y: -10 }}
                             animate={{ opacity: 1, y: 0 }}
                         >
-                            {submitStatus.type === 'error' ? <X size={18} /> : <Shield size={18} />}
+                            {submitStatus.type === 'error' ? <AlertCircle size={18} /> : <Shield size={18} />}
                             {submitStatus.message}
                         </motion.div>
                     )}
@@ -149,7 +175,7 @@ export function LoginPage() {
                                 <input type="checkbox" />
                                 <span>Remember for 30 days</span>
                             </label>
-                            <Link to="/#forgot-password" size={20} className="login-forgot">
+                            <Link to="/#forgot-password" className="login-forgot">
                                 Forgot password?
                             </Link>
                         </div>

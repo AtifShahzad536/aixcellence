@@ -9419,7 +9419,7 @@ strong {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	padding: 60px;
+	padding: 100px 60px 60px;
 	position: relative;
 	color: var(--white);
 }
@@ -9451,9 +9451,9 @@ strong {
 }
 
 .login-visual-title {
-	font-size: clamp(32px, 4vw, 48px);
+	font-size: clamp(28px, 3.5vw, 42px);
 	font-weight: 800;
-	line-height: 1.1;
+	line-height: 1.2;
 	margin-bottom: 24px;
 	letter-spacing: -0.02em;
 }
@@ -9474,7 +9474,7 @@ strong {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 80px;
+	padding: 100px 80px 80px;
 	background: var(--white);
 	position: relative;
 }
@@ -9680,8 +9680,9 @@ strong {
 
 	.login-visual-side {
 		flex: none;
-		padding: 40px 20px;
-		height: 300px;
+		padding: 100px 20px 40px;
+		height: auto;
+		min-height: 320px;
 	}
 
 	.login-brand-logo-large {
