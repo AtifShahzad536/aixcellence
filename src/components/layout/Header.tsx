@@ -57,6 +57,7 @@ function SolutionsDropdown() {
 				<DropdownColumn
 					title="Use Cases"
 					items={NAVIGATION_DATA.solutions.useCases}
+					className="product-column-use-cases"
 				/>
 			</div>
 		</div>
@@ -368,7 +369,7 @@ export function Header() {
 											initial={{ opacity: 0, y: -10 }}
 											animate={{ opacity: 1, y: 0 }}
 											exit={{ opacity: 0, y: -10 }}
-											className="dropdown-menu product-dropdown-menu"
+											className="dropdown-menu product-dropdown-menu product-dropdown-menu-solutions"
 										>
 											<SolutionsDropdown />
 										</motion.div>
