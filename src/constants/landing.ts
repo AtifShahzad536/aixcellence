@@ -433,7 +433,7 @@ export const HERO_DATA = {
     trustIndicators: [
         {
             text: 'Enterprise-grade security',
-            dotColor: 'hero-trust-dot-gold'
+            dotColor: 'hero-trust-dot-teal'
         },
         {
             text: 'AI-powered insights',
