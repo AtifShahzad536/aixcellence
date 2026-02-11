@@ -674,35 +674,32 @@ strong {
 .hero-buttons-new {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 16px;
+	gap: 12px;
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 64px;
 	max-width: 500px;
 	margin-left: auto;
 	margin-right: auto;
-}
-
-@media (max-width: 640px) {
-	.hero-buttons-new {
-		grid-template-columns: 1fr;
-		max-width: 300px;
-	}
+	width: 100%;
+	padding: 0 20px;
 }
 
 .btn-hero-primary-new {
 	background: var(--gradient-primary);
 	color: var(--white);
-	padding: 16px 32px;
-	font-size: var(--text-lg);
+	padding: 14px 24px;
+	font-size: clamp(14px, 2vw, 16px);
 	font-weight: var(--font-semibold);
 	border: none;
 	border-radius: 12px;
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
 	box-shadow: 0 8px 24px rgba(24, 203, 190, 0.3);
 	transition: all 0.3s ease;
 	text-decoration: none;
+	white-space: nowrap;
 }
 
 .btn-hero-primary-new:hover {
@@ -721,13 +718,15 @@ strong {
 .btn-hero-secondary-new {
 	background: transparent;
 	color: var(--text-dark);
-	padding: 16px 32px;
-	font-size: var(--text-lg);
+	padding: 14px 24px;
+	font-size: clamp(14px, 2vw, 16px);
 	font-weight: var(--font-semibold);
 	border: 2px solid var(--medium-gray);
 	border-radius: 12px;
 	display: inline-flex;
 	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
 	transition: all 0.3s ease;
 	text-decoration: none;
 }
