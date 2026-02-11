@@ -74,20 +74,19 @@ export function LoginPage() {
                 <div className="login-brand-group">
                     <motion.div
                         animate={{
-                            y: [0, -15, 0],
+                            y: [0, -10, 0],
                         }}
                         transition={{
                             duration: 5,
                             repeat: Infinity,
                             ease: "easeInOut"
                         }}
-                        style={{ marginBottom: '40px' }}
+                        style={{ marginBottom: '32px' }}
                     >
                         <img
                             src="/images/logos/fulllogo_nobuffer.png"
                             alt="AIX Logo"
                             className="login-brand-logo-large"
-                            style={{ height: '60px', width: 'auto' }}
                         />
                     </motion.div>
                     <h1 className="login-visual-title">
