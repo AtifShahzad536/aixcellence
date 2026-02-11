@@ -9419,10 +9419,11 @@ strong {
 		#0A1A2F;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: center;
+	/* PERFECTLY CENTERED */
 	align-items: center;
-	padding: 160px 60px 60px;
-	/* Aligns content with the cursor area at the top */
+	padding: 60px;
+	/* Reduced top padding since we are centering now */
 	position: relative;
 	color: #FFFFFF !important;
 	text-align: center;
@@ -9480,7 +9481,8 @@ strong {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	padding: 100px 80px 80px;
+	padding: 60px 80px;
+	/* Balanced padding */
 	background: var(--white);
 	position: relative;
 }
@@ -9493,6 +9495,8 @@ strong {
 
 .login-header {
 	margin-bottom: 40px;
+	text-align: center;
+	/* CENTERED HEADER CONTENT */
 }
 
 .login-title {
