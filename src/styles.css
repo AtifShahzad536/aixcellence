@@ -9690,9 +9690,10 @@ strong {
 
 	.login-visual-side {
 		flex: none;
-		padding: 100px 20px 40px;
+		padding: 80px 20px 30px;
 		height: auto;
-		min-height: 320px;
+		min-height: 280px;
+		display: flex !important;
 	}
 
 	.login-brand-logo-large {
