@@ -62,13 +62,13 @@ export function Footer() {
                 >
                     <Link to="/" className="footer-logo-link">
                         <img
-                            src="/images/logos/FullLogo_Transparent_NoBuffer.png"
+                            src="/images/logos/fulllogo_nobuffer.png"
                             alt="AIXcellence"
                             className="footer-logo-image"
                         />
                     </Link>
                     <div className="footer-brand-tagline">
-                        <p className="footer-brand-title">AIXCellence</p>
+                        {/* <p className="footer-brand-title">AIXCellence</p> */}
                         <p className="footer-brand-subtitle">Where AI meets excellence.</p>
                     </div>
 
