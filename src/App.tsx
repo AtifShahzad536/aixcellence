@@ -1,6 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { HelmetProvider } from 'react-helmet-async'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 import { Analytics } from '@vercel/analytics/react'
 
@@ -211,8 +212,10 @@ function AppContent() {
 
 export default function App() {
 	return (
-		<Router>
-			<AppContent />
-		</Router>
+		<HelmetProvider>
+			<Router>
+				<AppContent />
+			</Router>
+		</HelmetProvider>
 	)
 }
