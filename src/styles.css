@@ -1307,9 +1307,9 @@ strong {
 
 .footer-logo-image {
 	display: block;
-	height: 30px;
+	height: 70px;
 	width: auto;
-	margin-bottom: 16px;
+	/* margin-bottom: 1px; */
 }
 
 .footer-brand-tagline {

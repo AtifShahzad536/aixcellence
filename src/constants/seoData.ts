@@ -16,10 +16,10 @@ export const DEFAULT_SEO: SEOProps = {
     canonical: 'https://aixcellence.co/',
     ogTitle: 'AIXcellence — Where AI meets excellence | Intelligent Automation Platform',
     ogDescription: 'Transform your business with AIXcellence intelligent automation platform. ARA Agent handles 24/7 customer support and bookings. AXE Agent creates professional video content with AI cloning.',
-    ogImage: 'https://aixcellence.co/fulllogo_nobuffer.png',
+    ogImage: 'https://aixcellence.co/logo_aixcellence.png',
     twitterTitle: 'AIXcellence — Where AI meets excellence | Intelligent Automation Platform',
     twitterDescription: 'Transform your business with AIXcellence intelligent automation platform. ARA Agent handles 24/7 customer support and bookings. AXE Agent creates professional video content with AI cloning.',
-    twitterImage: 'https://aixcellence.co/fulllogo_nobuffer.png',
+    twitterImage: 'https://aixcellence.co/logo_aixcellence.png',
 };
 
 export const SEO_DATA: Record<string, SEOProps> = {

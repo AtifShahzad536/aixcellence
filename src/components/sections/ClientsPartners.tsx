@@ -9,14 +9,14 @@ export function ClientsPartners() {
 
     // IMPORTANT: Replace these placeholder logos with actual client/partner logos to reflect real partnerships.
     const logos = [
-        { name: 'TechCorp Solutions', src: '/images/logos/fulllogo_nobuffer.jpg', alt: 'TechCorp Solutions' },
-        { name: 'MediCare Plus', src: '/images/logos/fulllogo_nobuffer.jpg', alt: 'MediCare Plus' },
-        { name: 'Fashion Forward', src: '/images/logos/fulllogo_nobuffer.jpg', alt: 'Fashion Forward' },
-        { name: 'SecureBank Financial', src: '/images/logos/fulllogo_nobuffer.jpg', alt: 'SecureBank Financial' },
-        { name: 'EduLearn Academy', src: '/images/logos/fulllogo_nobuffer.jpg', alt: 'EduLearn Academy' },
-        { name: 'CloudScale Inc.', src: '/images/logos/fulllogo_nobuffer.jpg', alt: 'CloudScale Inc.' },
-        { name: 'MedTech Innovations', src: '/images/logos/fulllogo_nobuffer.jpg', alt: 'MedTech Innovations' },
-        { name: 'Global Retail Chain', src: '/images/logos/fulllogo_nobuffer.jpg', alt: 'Global Retail Chain' },
+        { name: 'TechCorp Solutions', src: '/images/logos/logo_aixcellence.png', alt: 'TechCorp Solutions' },
+        { name: 'MediCare Plus', src: '/images/logos/logo_aixcellence.png', alt: 'MediCare Plus' },
+        { name: 'Fashion Forward', src: '/images/logos/logo_aixcellence.png', alt: 'Fashion Forward' },
+        { name: 'SecureBank Financial', src: '/images/logos/logo_aixcellence.png', alt: 'SecureBank Financial' },
+        { name: 'EduLearn Academy', src: '/images/logos/logo_aixcellence.png', alt: 'EduLearn Academy' },
+        { name: 'CloudScale Inc.', src: '/images/logos/logo_aixcellence.png', alt: 'CloudScale Inc.' },
+        { name: 'MedTech Innovations', src: '/images/logos/logo_aixcellence.png', alt: 'MedTech Innovations' },
+        { name: 'Global Retail Chain', src: '/images/logos/logo_aixcellence.png', alt: 'Global Retail Chain' },
     ]
 
     // Duplicate logos for seamless infinite scroll (3 sets for smooth loop)

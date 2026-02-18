@@ -84,7 +84,7 @@ export function LoginPage() {
                         style={{ marginBottom: '32px', display: 'flex', justifyContent: 'center' }}
                     >
                         <img
-                            src="/images/icons/onlyicon.svg"
+                            src="/images/logos/logo_aixcellence.png"
                             alt="AIX Logo"
                             className="login-brand-logo-large"
                         />
@@ -108,7 +108,7 @@ export function LoginPage() {
                 <div className="login-form-container">
                     <div className="login-header">
                         <Link to="/" className="login-form-logo" style={{ display: 'inline-block', marginBottom: '32px' }}>
-                            <img src="/images/logos/fulllogo_nobuffer.png" alt="AIXcellence" style={{ height: '32px' }} />
+                            <img src="/images/logos/logo_aixcellence.png" alt="AIXcellence" style={{ height: '100px' }} />
                         </Link>
                         <h2 className="login-title">Welcome Back</h2>
                         <p className="login-subtitle">Please enter your details to sign in.</p>
