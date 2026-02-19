@@ -68,7 +68,7 @@ export function Footer() {
                         />
                     </Link>
                     <div className="footer-brand-tagline">
-                        <p className="footer-brand-title">Aixcellence</p>
+                        <p className="footer-brand-title">AIXcellence</p>
                         <p className="footer-brand-subtitle">Where AI meets excellence.</p>
                     </div>
 
